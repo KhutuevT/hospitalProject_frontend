@@ -1,6 +1,6 @@
 import React from "react";
-import "./MainPage.scss";
 import RegistrationForm from "../RegistrationField/RegistrationForm";
+import "./MainPage.scss";
 
 function MainPage() {
   return (

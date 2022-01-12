@@ -1,7 +1,7 @@
 import React from "react";
 import "./Header.scss";
 
-function Header({ headerText }) {
+const Header = ({ headerText }) => {
   return (
     <div className="header-div">
       <img className="logo-img" src="/images/Logo.svg" />

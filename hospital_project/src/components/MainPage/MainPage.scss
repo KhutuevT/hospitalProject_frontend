@@ -8,12 +8,14 @@ p {
     display: flex;
     align-items: center;
     justify-content: center;
+
     .main-page-div {
       display: flex;
       align-items: center;
       justify-content: center;
       width: 90%;
     }
+    
     .main-page-img {
       display: none;
     }
@@ -25,6 +27,7 @@ p {
     display: flex;
     align-items: center;
     justify-content: center;
+
     .main-page-div {
       display: flex;
       align-items: center;
@@ -32,6 +35,7 @@ p {
       height: 453px;
       width: 400px;
     }
+
     .main-page-img {
       display: none;
     }
@@ -44,6 +48,7 @@ p {
     align-items: center;
     justify-content: space-around;
     max-width: 1200px;
+
     .main-page-div {
       display: flex;
       align-items: center;
@@ -53,6 +58,7 @@ p {
       width: 400px;
     }
   }
+
   .main-page-img img {
     height: 100%;
   }

@@ -1,7 +1,6 @@
 import React from "react";
 import { useState } from "react";
 import Snackbar from "@mui/material/Snackbar";
-
 import "./RegistrationForm.scss";
 
 const vertical = "top";
@@ -46,7 +45,10 @@ const RegistrationForm = () => {
         } else {
           setOpen(false);
           setErrMessage(
-            "Пароль должен: \n - содержать только латинские символы - быть длиной не менее 6 символов - содержать хотя бы одну цифру - и не содержать пробелы"
+            "Пароль должен: - содержать только латинские символы"+
+            "- быть длиной не менее 6 символов "+
+            "- содержать хотя бы одну цифру"+
+            "- не содержать пробелы"
           );
           handleClick();
         }
