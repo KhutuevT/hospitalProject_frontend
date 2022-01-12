@@ -1,0 +1,109 @@
+.form-body {
+  height: 95%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.buttons-div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  button {
+    width: 195px;
+    height: 40px;
+    font-size: 18px;
+    margin-bottom: 5px;
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .registration-field-div {
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffff;
+    width: 100%;
+    max-width: 350px;
+    height: 453px;
+
+    .form-title {
+      height: 5%;
+      font-size: 36px;
+    }
+
+    form {
+      height: 90%;
+
+      p {
+        margin-bottom: 10px;
+      }
+    }
+
+    .input-div {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      align-items: flex-start;
+
+      input {
+        width: 100%;
+        height: 40px;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        border-radius: 4px;
+      }
+    }
+
+    .buttons-div {
+      button {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media (min-width: 425px) and (max-width: 4000px) {
+  .registration-field-div {
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffff;
+    width: 400px;
+    height: 453px;
+
+    .form-title {
+      height: 50px;
+      font-size: 36px;
+    }
+
+    form {
+      height: 90%;
+      
+      p {
+        margin-top: 20px;
+      }
+    }
+
+    .input-div {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      width: 321px;
+
+      input {
+        width: 100%;
+        height: 40px;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        border-radius: 4px;
+      }
+    }
+  }
+}
