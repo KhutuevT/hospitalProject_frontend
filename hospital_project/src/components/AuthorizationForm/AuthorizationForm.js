@@ -34,12 +34,18 @@ const AuthorizationForm = () => {
       if (loginIsValid) {
         if (passwordIsValid) {
           API.authorization(login, password)
-            .then((result) => {
+            .then(() => {
               history.push(`/home`);
             })
             .catch((e) => {
+              const errorCode = e.response.data.code;
               setOpen(false);
-              setErrMessage("Неверные данные!");
+
+              if (errorCode === 301) {
+                setErrMessage("Неправильный пароль");
+              } if (errorCode === 302){
+                setErrMessage("Пользователя с данным логином несуществует");
+              }
               handleClick();
             });
         } else {
