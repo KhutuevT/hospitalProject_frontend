@@ -4,6 +4,7 @@ import { useHistory } from "react-router";
 import Snackbar from "@mui/material/Snackbar";
 import API from "../../controllers/API";
 import "./AuthorizationForm.scss";
+import { css } from "@mui/styled-engine";
 
 const vertical = "top";
 const horizontal = "center";
@@ -40,12 +41,15 @@ const AuthorizationForm = () => {
             .catch((e) => {
               const errorCode = e.response.data.code;
               setOpen(false);
-
-              if (errorCode === 301) {
-                setErrMessage("Неправильный пароль");
-              }
-              if (errorCode === 302) {
-                setErrMessage("Пользователя с данным логином несуществует");
+              switch (errorCode) {
+                case 301:
+                  setErrMessage("Неправильный пароль");
+                  break;
+                case 302:
+                  setErrMessage("Пользователя с данным логином несуществует");
+                  break;
+                default:
+                  break;
               }
               handleClick();
             });
