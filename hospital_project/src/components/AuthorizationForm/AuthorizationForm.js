@@ -1,15 +1,17 @@
 import React from "react";
 import { useState } from "react";
+import { useHistory } from "react-router";
 import Snackbar from "@mui/material/Snackbar";
-import "./RegistrationForm.scss";
+import API from "../../controllers/API";
+import "./AuthorizationForm.scss";
 
 const vertical = "top";
 const horizontal = "center";
 
-const RegistrationForm = () => {
+const AuthorizationForm = () => {
+  const history = useHistory();
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
-  const [reapeatPassword, setreapeatPassword] = useState("");
   const [open, setOpen] = useState(false);
   const [errMessage, setErrMessage] = useState("");
 
@@ -28,20 +30,18 @@ const RegistrationForm = () => {
     e.preventDefault();
     const loginIsValid = login.match(/^[а-яА-Яa-zA-Z\d]{6,}$/gm);
     const passwordIsValid = password.match(/^(?=.*\d)[a-zA-Z\d]{6,}$/gm);
-    if (
-      (login.trim().length !== 0) &
-      (password.trim().length !== 0) &
-      (reapeatPassword.trim().length !== 0)
-    ) {
+    if ((login.trim().length !== 0) & (password.trim().length !== 0)) {
       if (loginIsValid) {
         if (passwordIsValid) {
-          if (password === reapeatPassword) {
-            setOpen(false);
-          } else {
-            setOpen(false);
-            setErrMessage("Пароли не совпадают!");
-            handleClick();
-          }
+          API.authorization(login, password)
+            .then((result) => {
+              history.push(`/home`);
+            })
+            .catch((e) => {
+              setOpen(false);
+              setErrMessage("Неверные данные!");
+              handleClick();
+            });
         } else {
           setOpen(false);
           setErrMessage(
@@ -65,7 +65,7 @@ const RegistrationForm = () => {
   };
 
   return (
-    <div className="registration-field-div">
+    <div className="authorization-field-div">
       <div>
         <Snackbar
           anchorOrigin={{ vertical, horizontal }}
@@ -77,7 +77,7 @@ const RegistrationForm = () => {
       </div>
       <form onSubmit={handleSubmit}>
         <div className="form-title">
-          <p>Регистрация</p>
+          <p>Войти в ситему</p>
         </div>
         <div className="form-body">
           <div className="input-div">
@@ -97,18 +97,9 @@ const RegistrationForm = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-          <div className="input-div">
-            <label>Repeat password:</label>
-            <input
-              type="password"
-              id="reapeatPassword"
-              value={reapeatPassword}
-              onChange={(e) => setreapeatPassword(e.target.value)}
-            />
-          </div>
           <div className="buttons-div">
-            <button>Зарегистрироваться</button>
-            <a href="URL">Авторизоваться</a>
+            <button>Войти</button>
+            <a href="/registration">Зарегистрироваться</a>
           </div>
         </div>
       </form>
@@ -116,4 +107,4 @@ const RegistrationForm = () => {
   );
 };
 
-export default RegistrationForm;
+export default AuthorizationForm;

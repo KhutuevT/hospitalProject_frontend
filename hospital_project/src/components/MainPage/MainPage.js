@@ -1,5 +1,7 @@
 import React from "react";
-import RegistrationForm from "../RegistrationField/RegistrationForm";
+import { Switch, Route, Redirect } from "react-router-dom";
+import RegistrationForm from "../RegistrationForm/RegistrationForm";
+import AuthorizationForm from "../AuthorizationForm/AuthorizationForm";
 import "./MainPage.scss";
 
 function MainPage() {
@@ -9,7 +11,15 @@ function MainPage() {
         <img className="hospital-img" src="/images/Vector.svg" />
       </div>
       <div className="main-page-div main-page-form">
-        <RegistrationForm />
+        <Switch>
+          <Route path="/registration">
+            <RegistrationForm />
+          </Route>
+          <Route path="/authorization">
+            <AuthorizationForm />
+          </Route>
+          <Redirect from="/" to="/registration" />
+        </Switch>
       </div>
     </div>
   );
