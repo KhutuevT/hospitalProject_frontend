@@ -1,7 +1,7 @@
 import React from "react";
 import "./HomePage.scss";
 
-function HomePage() {
+const HomePage = () => {
   return (
     <div className="home-page">
     </div>

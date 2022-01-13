@@ -43,7 +43,8 @@ const AuthorizationForm = () => {
 
               if (errorCode === 301) {
                 setErrMessage("Неправильный пароль");
-              } if (errorCode === 302){
+              }
+              if (errorCode === 302) {
                 setErrMessage("Пользователя с данным логином несуществует");
               }
               handleClick();

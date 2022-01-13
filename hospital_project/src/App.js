@@ -7,10 +7,9 @@ import {
 import Header from './components/Header/Header';
 import MainPage from './components/MainPage/MainPage';
 import HomePage from './components/HomePage/HomePage';
-
 import './App.scss';
 
-function App() {
+const App = () =>  {
   return (
     <div className="App">
       <header>
@@ -19,7 +18,7 @@ function App() {
         <Route path="/home">
             <HomePage />
           </Route>
-          <Route path="">
+          <Route path="/">
             <MainPage />
           </Route>
           <Redirect from="/" to="/registration" />

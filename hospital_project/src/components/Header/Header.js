@@ -5,7 +5,7 @@ import "./Header.scss";
 const Header = () => {
   let headerText = "";
 
-  let location = useLocation();
+  const location = useLocation();
 
   switch (location.pathname) {
     case "/authorization":
@@ -24,6 +24,7 @@ const Header = () => {
       headerText = "";
       break;
   }
+  
   return (
     <div className="header-div">
       <img className="logo-img" src="/images/Logo.svg" />
