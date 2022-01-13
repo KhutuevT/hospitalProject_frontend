@@ -1,12 +1,15 @@
 import React from "react";
 import { useState } from "react";
+import { useHistory } from "react-router";
 import Snackbar from "@mui/material/Snackbar";
+import API from "../../controllers/API";
 import "./RegistrationForm.scss";
 
 const vertical = "top";
 const horizontal = "center";
 
 const RegistrationForm = () => {
+  const history = useHistory();
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
   const [reapeatPassword, setreapeatPassword] = useState("");
@@ -37,6 +40,16 @@ const RegistrationForm = () => {
         if (passwordIsValid) {
           if (password === reapeatPassword) {
             setOpen(false);
+            API.registration(login, password)
+              .then((result) => {
+                history.push(`/home`);
+              })
+              .catch((e) => {
+                setOpen(false);
+                setErrMessage("Такой логин уже используется!");
+                handleClick();
+                console.log(e);
+              });
           } else {
             setOpen(false);
             setErrMessage("Пароли не совпадают!");
@@ -108,7 +121,7 @@ const RegistrationForm = () => {
           </div>
           <div className="buttons-div">
             <button>Зарегистрироваться</button>
-            <a href="URL">Авторизоваться</a>
+            <a href="/authorization">Авторизоваться</a>
           </div>
         </div>
       </form>

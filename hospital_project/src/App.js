@@ -1,15 +1,28 @@
 import React from 'react';
+import {
+  Switch,
+  Route,
+  Redirect
+} from 'react-router-dom';
 import Header from './components/Header/Header';
 import MainPage from './components/MainPage/MainPage';
-import RegistrationForm from './components/RegistrationField/RegistrationForm';
+import HomePage from './components/HomePage/HomePage';
 import './App.scss';
 
-function App() {
+const App = () =>  {
   return (
     <div className="App">
       <header>
         <Header />
-        <MainPage />
+        <Switch>
+        <Route path="/home">
+            <HomePage />
+          </Route>
+          <Route path="/">
+            <MainPage />
+          </Route>
+          <Redirect from="/" to="/registration" />
+        </Switch>
       </header>
     </div>
   );
