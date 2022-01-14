@@ -1,0 +1,28 @@
+.create-visit-form {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-bottom: 30px;
+  padding-top: 30px;
+  box-shadow: 0px 0px 9px 0px;
+
+  .form-div {
+    margin-left: 5px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .create-visit-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding-bottom: 30px;
+    padding-top: 30px;
+    box-shadow: 0px 0px 9px 0px;
+    
+    .form-div {
+      margin-bottom: 10px;
+    }
+  }
+}

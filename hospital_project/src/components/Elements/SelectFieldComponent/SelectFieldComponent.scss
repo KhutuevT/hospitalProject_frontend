@@ -1,0 +1,17 @@
+.select-field-div {
+  display: flex;
+  justify-content: start;
+
+  .select-field{
+    background-color: white;
+    border-radius: 5px;
+    height: 40px;
+    
+    div{
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}

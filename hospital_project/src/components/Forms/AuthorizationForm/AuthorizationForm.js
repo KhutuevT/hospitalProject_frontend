@@ -1,10 +1,10 @@
 import React from "react";
 import { useState } from "react";
 import { useHistory } from "react-router";
+import API from "../../../controllers/API";
 import Snackbar from "@mui/material/Snackbar";
-import API from "../../controllers/API";
+import ButtonComponent from "../../Elements/ButtonComponent/ButtonComponent";
 import "./AuthorizationForm.scss";
-import { css } from "@mui/styled-engine";
 
 const vertical = "top";
 const horizontal = "center";
@@ -109,7 +109,7 @@ const AuthorizationForm = () => {
             />
           </div>
           <div className="buttons-div">
-            <button>Войти</button>
+            <ButtonComponent text={"Войти"} />
             <a href="/registration">Зарегистрироваться</a>
           </div>
         </div>

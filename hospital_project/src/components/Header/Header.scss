@@ -12,10 +12,19 @@
   .header-div {
     background-color: #c5e9ff;
     display: flex;
-    flex-direction: center;
+    justify-content: space-between;
     align-items: center;
     box-shadow: 0px 0px 9px 0px;
     margin-bottom: 30px;
+
+    div{
+      display: flex;
+      align-items: center;
+    }
+
+    button{
+      margin-right: 20px;
+    }
 
     p {
       margin-top: 0px;
@@ -36,10 +45,19 @@
   .header-div {
     background-color: #c5e9ff;
     display: flex;
-    flex-direction: center;
+    justify-content: space-between;
     align-items: center;
     box-shadow: 0px 0px 9px 0px;
     margin-bottom: 30px;
+
+    div{
+      display: flex;
+      align-items: center;
+    }
+    
+    button{
+      margin-right: 20px;
+    }
 
     p {
       margin-top: 0px;
@@ -60,10 +78,19 @@
   .header-div {
     background-color: #c5e9ff;
     display: flex;
-    flex-direction: center;
+    justify-content: space-between;
     align-items: center;
     box-shadow: 0px 0px 9px 0px;
     margin-bottom: 30px;
+
+    div{
+      display: flex;
+      align-items: center;
+    }
+
+    button{
+      margin-right: 20px;
+    }
     
     p {
       margin-top: 0px;

@@ -1,8 +1,9 @@
 import React from "react";
 import { useState } from "react";
 import { useHistory } from "react-router";
+import API from "../../../controllers/API";
 import Snackbar from "@mui/material/Snackbar";
-import API from "../../controllers/API";
+import Button from "../../Elements/ButtonComponent/ButtonComponent";
 import "./RegistrationForm.scss";
 
 const vertical = "top";
@@ -120,7 +121,7 @@ const RegistrationForm = () => {
             />
           </div>
           <div className="buttons-div">
-            <button>Зарегистрироваться</button>
+            <Button text={"Зарегистрироваться"} />
             <a href="/authorization">Авторизоваться</a>
           </div>
         </div>

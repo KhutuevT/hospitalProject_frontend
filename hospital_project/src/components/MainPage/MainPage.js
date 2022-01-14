@@ -1,7 +1,7 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
-import RegistrationForm from "../RegistrationForm/RegistrationForm";
-import AuthorizationForm from "../AuthorizationForm/AuthorizationForm";
+import RegistrationForm from "../Forms/RegistrationForm/RegistrationForm";
+import AuthorizationForm from "../Forms/AuthorizationForm/AuthorizationForm";
 import "./MainPage.scss";
 
 function MainPage() {
