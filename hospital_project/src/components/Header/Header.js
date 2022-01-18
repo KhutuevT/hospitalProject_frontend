@@ -33,7 +33,7 @@ const Header = () => {
         <p className="header-text">{headerText}</p>
       </div>
       <div className="button-exit">
-      {location.pathname === "/home" ? <ButtonComponent text={"Выход"} /> : null}
+      {location.pathname === "/home" && <ButtonComponent text={"Выход"} />}
       </div>
     </div>
   );
