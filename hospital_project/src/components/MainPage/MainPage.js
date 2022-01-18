@@ -8,8 +8,8 @@ const MainPage = () => {
   return (
     <div className="main-page">
       <div className="main-page-div main-page-img">
-        <img className="hospital-img" src="/images/Vector.svg" />
-      </div>
+        <img className="hospital-img" src="/images/Vector.svg" alt='' /> 
+      </div> 
       <div className="main-page-div main-page-form">
         <Switch>
           <Route path="/registration">

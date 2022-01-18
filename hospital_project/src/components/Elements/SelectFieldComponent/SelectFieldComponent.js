@@ -18,8 +18,8 @@ const SelectFieldComponent = ({ value, handleChange }) => {
         displayEmpty
         inputProps={{ "aria-label": "Without label" }}
       >
-        {doc_names.map((doc_name) => (
-          <MenuItem value={doc_name}>{doc_name}</MenuItem>
+        {doc_names.map((doc_name, index) => (
+          <MenuItem key={`menu-item${index}`} value={doc_name}>{doc_name}</MenuItem>
         ))}
       </Select>
     </FormControl>

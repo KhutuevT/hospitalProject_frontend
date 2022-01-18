@@ -44,7 +44,7 @@ const CreateVisitForm = ({ getAllVisits }) => {
           });
           getAllVisits();
         })
-        .catch((err) => {});
+        .catch((err) => {}); //add error log
     } else {
       handleClose();
       setErrMessage("Форма не должна содержать пустые поля!");

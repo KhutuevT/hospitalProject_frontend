@@ -10,9 +10,9 @@ const HomePage = () => {
     API.getAllVisits().then((res) => setVisits(res.data.data));
   }, []);
 
-  useEffect(async () => {
+  useEffect( () => {
     getAllVisits();
-  }, []);
+  }, []); // check async await
 
   return (
     <div className="home-page">
