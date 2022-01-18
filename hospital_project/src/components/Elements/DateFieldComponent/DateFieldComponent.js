@@ -3,13 +3,15 @@ import TextField from "@mui/material/TextField";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import DatePicker from "@mui/lab/DatePicker";
+import ruLocale from 'date-fns/locale/ru';
 import "./DateFieldComponent.scss"
+
 
 const DateFieldComponent = ({value, setValue}) => {
   return (
-    <div className="date-field-div">
-      <LocalizationProvider dateAdapter={AdapterDateFns} className="data-field">
+      <LocalizationProvider dateAdapter={AdapterDateFns} className="data-field" locale={ruLocale}>
         <DatePicker
+          mask={'__.__.____'}
           value={value}
           onChange={(newValue) => {
             setValue(newValue);
@@ -17,7 +19,6 @@ const DateFieldComponent = ({value, setValue}) => {
           renderInput={(params) => <TextField {...params} className="text-input-field" />}
         />
       </LocalizationProvider>
-    </div>
   );
 };
 
