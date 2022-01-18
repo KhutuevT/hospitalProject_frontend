@@ -11,7 +11,7 @@ import {
 import VisitComponent from "../VisitComponent/VisitComponent";
 import "./VisitListComponent.scss";
 
-const VisitListComponent = ({ visits }) => {
+const VisitListComponent = ({ visits, getAllVisits}) => {
   const arrVisits = Array.from(visits);
   const tableTitle = ["Имя", "Врач", "Дата", "Жалобы"];
   
@@ -22,14 +22,14 @@ const VisitListComponent = ({ visits }) => {
           <TableHead>
             <TableRow>
               {tableTitle.map((title, index) => (
-                <TableCell key={`title-${index}`} align="center">{title}</TableCell>
+                <TableCell key={`table_cell${index}`} align="center">{title}</TableCell>
               ))}
               <TableCell></TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {arrVisits.map((visit, index) => (
-              <VisitComponent key={`visit-${index}`} index={index} visit={visit} />
+              <VisitComponent getAllVisits={getAllVisits} key={`visit-${index}`} index={index} visit={visit} />
             ))}
           </TableBody>
         </Table>

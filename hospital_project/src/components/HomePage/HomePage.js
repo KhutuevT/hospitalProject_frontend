@@ -17,7 +17,7 @@ const HomePage = () => {
   return (
     <div className="home-page">
       <CreateVisitForm getAllVisits={getAllVisits} />
-      <VisitListComponent visits={visits} />
+      <VisitListComponent visits={visits} getAllVisits={getAllVisits}/>
     </div>
   );
 };
