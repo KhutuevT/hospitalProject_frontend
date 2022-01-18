@@ -11,11 +11,13 @@ import "./CreateVisitForm.scss";
 const vertical = "top";
 const horizontal = "center";
 
+const todayDate = moment().format()
+
 const CreateVisitForm = ({ getAllVisits }) => {
   const [visitForm, setVisitForm] = useState({
     patient_name: "",
     doc_name: "",
-    date: "",
+    date: todayDate,
     complaints: "",
   });
 
