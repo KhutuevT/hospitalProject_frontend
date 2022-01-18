@@ -1,0 +1,40 @@
+.visit-list-component {
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 20px;
+
+  .visit-list {
+    border-radius: 0px;
+
+    thead {
+      background-color: #c4c4c4;
+      border: solid 1px #c4c4c4;
+      border-bottom: solid 2px;
+    }
+
+    tbody {
+      border: solid 1px;
+
+      td {
+        border: 0px;
+        border-right: solid 1px;
+      }
+    }
+  }
+  
+  .list-title {
+    display: flex;
+    justify-content: space-between;
+    background-color: #c4c4c4;
+    padding-bottom: 20px;
+
+    p {
+      width: 25%;
+    }
+  }
+
+  .button-div {
+    display: flex;
+    justify-content: space-between;
+  }
+}

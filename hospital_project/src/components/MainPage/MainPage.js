@@ -1,15 +1,15 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
-import RegistrationForm from "../RegistrationForm/RegistrationForm";
-import AuthorizationForm from "../AuthorizationForm/AuthorizationForm";
+import RegistrationForm from "../Forms/RegistrationForm/RegistrationForm";
+import AuthorizationForm from "../Forms/AuthorizationForm/AuthorizationForm";
 import "./MainPage.scss";
 
-function MainPage() {
+const MainPage = () => {
   return (
     <div className="main-page">
       <div className="main-page-div main-page-img">
-        <img className="hospital-img" src="/images/Vector.svg" />
-      </div>
+        <img className="hospital-img" src="/images/Vector.svg" alt='' /> 
+      </div> 
       <div className="main-page-div main-page-form">
         <Switch>
           <Route path="/registration">

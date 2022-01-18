@@ -1,0 +1,17 @@
+.form-control.MuiFormControl-root {
+  margin: 0;
+  min-width: 120px;
+
+  div {
+    padding: 0;
+  }
+
+  .select-field {
+    background-color: white;
+    height: 40px;
+
+    div {
+      padding: 0;
+    }
+  }
+}
