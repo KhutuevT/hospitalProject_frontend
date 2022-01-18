@@ -1,5 +1,4 @@
-import React from "react";
-import { useState } from "react";
+import {React, useState } from "react";
 import { useHistory } from "react-router";
 import API from "../../../controllers/API";
 import Snackbar from "@mui/material/Snackbar";
@@ -24,7 +23,10 @@ const AuthorizationForm = () => {
   const setAuth = (e) => {
     e.preventDefault();
     const { id, value } = e.target;
-    setauthForm({ ...authForm, [id]: value });
+    setauthForm({ 
+      ...authForm, 
+      [id]: value 
+    });
   };
 
   const handleClick = () => {

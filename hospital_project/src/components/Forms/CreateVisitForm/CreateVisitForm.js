@@ -1,5 +1,4 @@
-import React from "react";
-import { useState } from "react";
+import { React, useState } from "react";
 import API from "../../../controllers/API";
 import moment from "moment";
 import Snackbar from "@mui/material/Snackbar";
@@ -65,7 +64,10 @@ const CreateVisitForm = ({ getAllVisits }) => {
   const setVisit = (e) => {
     e.preventDefault();
     const { id, value } = e.target;
-    setVisitForm({ ...visitForm, [id]: value });
+    setVisitForm({
+      ...visitForm,
+      [id]: value,
+    });
   };
 
   const handleClick = () => {
