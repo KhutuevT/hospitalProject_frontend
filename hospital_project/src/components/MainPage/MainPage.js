@@ -4,7 +4,7 @@ import RegistrationForm from "../Forms/RegistrationForm/RegistrationForm";
 import AuthorizationForm from "../Forms/AuthorizationForm/AuthorizationForm";
 import "./MainPage.scss";
 
-function MainPage() {
+const MainPage = () => {
   return (
     <div className="main-page">
       <div className="main-page-div main-page-img">

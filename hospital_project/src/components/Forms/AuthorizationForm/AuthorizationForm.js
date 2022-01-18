@@ -4,6 +4,7 @@ import { useHistory } from "react-router";
 import API from "../../../controllers/API";
 import Snackbar from "@mui/material/Snackbar";
 import ButtonComponent from "../../Elements/ButtonComponent/ButtonComponent";
+import TextInputFieldComponent from "../../Elements/TextInputFieldComponent/TextInputFieldComponent";
 import "./AuthorizationForm.scss";
 
 const vertical = "top";
@@ -11,10 +12,20 @@ const horizontal = "center";
 
 const AuthorizationForm = () => {
   const history = useHistory();
-  const [login, setLogin] = useState("");
-  const [password, setPassword] = useState("");
+
   const [open, setOpen] = useState(false);
   const [errMessage, setErrMessage] = useState("");
+
+  const [authForm, setauthForm] = useState({
+    login: "",
+    password: "",
+  });
+
+  const setAuth = (e) => {
+    e.preventDefault();
+    const { id, value } = e.target;
+    setauthForm({ ...authForm, [id]: value });
+  };
 
   const handleClick = () => {
     setOpen(true);
@@ -29,6 +40,7 @@ const AuthorizationForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const { login, password } = authForm;
     const loginIsValid = login.match(/^[а-яА-Яa-zA-Z\d]{6,}$/gm);
     const passwordIsValid = password.match(/^(?=.*\d)[a-zA-Z\d]{6,}$/gm);
     if ((login.trim().length !== 0) & (password.trim().length !== 0)) {
@@ -93,19 +105,19 @@ const AuthorizationForm = () => {
         <div className="form-body">
           <div className="input-div">
             <label>Login:</label>
-            <input
-              id="login"
-              value={login}
-              onChange={(e) => setLogin(e.target.value)}
-            ></input>
+            <TextInputFieldComponent
+              id={"login"}
+              value={authForm.login}
+              handleChange={setAuth}
+            />
           </div>
           <div className="input-div">
             <label>Password:</label>
-            <input
-              type="password"
-              id="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+            <TextInputFieldComponent
+              id={"password"}
+              type={"password"}
+              value={authForm.password}
+              handleChange={setAuth}
             />
           </div>
           <div className="buttons-div">

@@ -1,17 +1,18 @@
-.select-field-div {
-  display: flex;
-  justify-content: start;
+.form-control.MuiFormControl-root {
+  margin: 0;
+  min-width: 120px;
 
-  .select-field{
+  div {
+    padding: 0;
+  }
+
+  .select-field {
     background-color: white;
-    border-radius: 5px;
     height: 40px;
     
-    div{
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    div {
+      padding: 0;
     }
   }
 }
+

@@ -1,16 +1,18 @@
 import React from "react";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+} from "@mui/material";
+import moment from "moment";
 import "./VisitListComponent.scss";
 
 const VisitListComponent = ({ visits }) => {
   const arrVisits = Array.from(visits);
-  console.log(visits);
   return (
     <div className="visit-list-component">
       <TableContainer className="visit-list" component={Paper}>
@@ -25,15 +27,15 @@ const VisitListComponent = ({ visits }) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {arrVisits.map((visit) => (
+            {arrVisits.map(({patient_name, doc_name, date, complaints}, index) => (
               <TableRow
-                key={visit.name}
+                key={index}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               >
-                <TableCell align="center">{visit.patient_name}</TableCell>
-                <TableCell align="center">{visit.doc_name}</TableCell>
-                <TableCell align="center">{visit.date}</TableCell>
-                <TableCell align="center">{visit.complaints}</TableCell>
+                <TableCell align="center">{patient_name}</TableCell>
+                <TableCell align="center">{doc_name}</TableCell>
+                <TableCell align="center">{moment(date).format("MM-DD-YYYY")}</TableCell>
+                <TableCell align="center">{complaints}</TableCell>
                 <TableCell align="center">
                   <div className="button-div">
                     <img className="delete-img" src="/images/Delete.svg" />

@@ -4,6 +4,7 @@ import { useHistory } from "react-router";
 import API from "../../../controllers/API";
 import Snackbar from "@mui/material/Snackbar";
 import Button from "../../Elements/ButtonComponent/ButtonComponent";
+import TextInputFieldComponent from "../../Elements/TextInputFieldComponent/TextInputFieldComponent";
 import "./RegistrationForm.scss";
 
 const vertical = "top";
@@ -11,9 +12,18 @@ const horizontal = "center";
 
 const RegistrationForm = () => {
   const history = useHistory();
-  const [login, setLogin] = useState("");
-  const [password, setPassword] = useState("");
-  const [reapeatPassword, setreapeatPassword] = useState("");
+  const [regForm, setRegForm] = useState({
+    login: "",
+    password: "",
+    reapeatPassword: "",
+  });
+
+  const setReg = (e) => {
+    e.preventDefault();
+    const { id, value } = e.target;
+    setRegForm({ ...regForm, [id]: value });
+  };
+
   const [open, setOpen] = useState(false);
   const [errMessage, setErrMessage] = useState("");
 
@@ -30,6 +40,7 @@ const RegistrationForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const { login, password, reapeatPassword } = regForm;
     const loginIsValid = login.match(/^[а-яА-Яa-zA-Z\d]{6,}$/gm);
     const passwordIsValid = password.match(/^(?=.*\d)[a-zA-Z\d]{6,}$/gm);
     if (
@@ -49,7 +60,6 @@ const RegistrationForm = () => {
                 setOpen(false);
                 setErrMessage("Такой логин уже используется!");
                 handleClick();
-                console.log(e);
               });
           } else {
             setOpen(false);
@@ -96,28 +106,28 @@ const RegistrationForm = () => {
         <div className="form-body">
           <div className="input-div">
             <label>Login:</label>
-            <input
-              id="login"
-              value={login}
-              onChange={(e) => setLogin(e.target.value)}
-            ></input>
+            <TextInputFieldComponent
+              id={"login"}
+              value={regForm.login}
+              handleChange={setReg}
+            />
           </div>
           <div className="input-div">
             <label>Password:</label>
-            <input
-              type="password"
-              id="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+            <TextInputFieldComponent
+              id={"password"}
+              value={regForm.password}
+              handleChange={setReg}
+              type={"password"}
             />
           </div>
           <div className="input-div">
             <label>Repeat password:</label>
-            <input
-              type="password"
-              id="reapeatPassword"
-              value={reapeatPassword}
-              onChange={(e) => setreapeatPassword(e.target.value)}
+            <TextInputFieldComponent
+              id={"reapeatPassword"}
+              value={regForm.reapeatPassword}
+              handleChange={setReg}
+              type={"password"}
             />
           </div>
           <div className="buttons-div">

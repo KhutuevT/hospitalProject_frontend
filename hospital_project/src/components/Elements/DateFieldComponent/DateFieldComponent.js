@@ -6,7 +6,6 @@ import DatePicker from "@mui/lab/DatePicker";
 import "./DateFieldComponent.scss"
 
 const DateFieldComponent = ({value, setValue}) => {
-
   return (
     <div className="date-field-div">
       <LocalizationProvider dateAdapter={AdapterDateFns} className="data-field">

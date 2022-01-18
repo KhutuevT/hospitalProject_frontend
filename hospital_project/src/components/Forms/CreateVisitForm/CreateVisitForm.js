@@ -1,9 +1,10 @@
 import React from "react";
 import { useState } from "react";
 import API from "../../../controllers/API";
+import moment from "moment";
 import Snackbar from "@mui/material/Snackbar";
-import DateFieldComponent from "../../Elements/DateFieldComponent/DateFieldComponent";
 import ButtonComponent from "../../Elements/ButtonComponent/ButtonComponent";
+import DateFieldComponent from "../../Elements/DateFieldComponent/DateFieldComponent";
 import SelectFieldComponent from "../../Elements/SelectFieldComponent/SelectFieldComponent";
 import TextInputFieldComponent from "../../Elements/TextInputFieldComponent/TextInputFieldComponent";
 import "./CreateVisitForm.scss";
@@ -24,21 +25,24 @@ const CreateVisitForm = ({ getAllVisits }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const { patient_name, doc_name, date, complaints } = visitForm;
-    console.log(patient_name, doc_name, date, complaints);
     if (
       patient_name.trim().length !== 0 &&
       doc_name.trim().length !== 0 &&
       date.trim().length !== 0 &&
       complaints.trim().length !== 0
     ) {
-      handleClose();
       API.addNewVisit(visitForm)
         .then((result) => {
+          handleClose();
+          setVisitForm({
+            patient_name: "",
+            doc_name: "",
+            date: "",
+            complaints: "",
+          });
           getAllVisits();
         })
-        .catch((err) => {
-          console.log(err);
-        });
+        .catch((err) => {});
     } else {
       handleClose();
       setErrMessage("Форма не должна содержать пустые поля!");
@@ -51,21 +55,16 @@ const CreateVisitForm = ({ getAllVisits }) => {
   };
 
   const setDate = (full_date) => {
-    const date = `${full_date.getFullYear()}.${
-      full_date.getMonth() + 1
-    }.${full_date.getDate()}`;
-    console.log(date);
-    console.log(full_date);
+    const date = moment(full_date).format();
     setVisitForm({
       ...visitForm,
       date,
     });
   };
-  
+
   const setVisit = (e) => {
     e.preventDefault();
     const { id, value } = e.target;
-    console.log(id, value);
     setVisitForm({ ...visitForm, [id]: value });
   };
 
@@ -93,22 +92,31 @@ const CreateVisitForm = ({ getAllVisits }) => {
       </div>
       <form onSubmit={handleSubmit} className="create-visit-form">
         <div className="form-div">
+          <label>Имя</label>
           <TextInputFieldComponent
             id={"patient_name"}
             handleChange={setVisit}
+            value={visitForm.patient_name}
           />
         </div>
         <div className="form-div">
+          <label>Врач</label>
           <SelectFieldComponent
             value={visitForm.doc_name}
             handleChange={setDocName}
           />
         </div>
         <div className="form-div">
+          <label>Дата</label>
           <DateFieldComponent value={visitForm.date} setValue={setDate} />
         </div>
         <div className="form-div">
-          <TextInputFieldComponent id={"complaints"} handleChange={setVisit} />
+          <label>Жалобы</label>
+          <TextInputFieldComponent
+            id={"complaints"}
+            handleChange={setVisit}
+            value={visitForm.complaints}
+          />
         </div>
         <div className="form-div">
           <ButtonComponent text={"Добавить"} />

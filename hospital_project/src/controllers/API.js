@@ -10,25 +10,25 @@ class API {
   _patch_updateVisitUrl = `${this._VISIT_URL}/updateVisit`;
   _delete_VisitUrl = `${this._VISIT_URL}/deleteVisit`;
 
-  async registration(login, password) {
+  registration = async(login, password) => {
     return await axios.post(this._post_AddNewUserUrl, {
       login,
       password,
     });
   }
 
-  async authorization(login, password) {
+  authorization = async (login, password) => {
     return await axios.post(this._post_AuthUserUrl, {
       login,
       password,
     });
   }
 
-  async getAllVisits(){
+  getAllVisits = async () => {
     return await axios.get(this._get_AllVisitsUrl)
   }
 
-  async addNewVisit(visits){
+  addNewVisit = async (visits) => {
     return await axios.post(this._post_addNewVisitsUrl, {
       visits
     })

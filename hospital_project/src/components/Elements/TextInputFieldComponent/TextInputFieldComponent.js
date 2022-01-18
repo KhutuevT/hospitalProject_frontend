@@ -2,7 +2,7 @@ import * as React from "react";
 import TextField from "@mui/material/TextField";
 import "./TextInputFieldComponent.scss";
 
-const TextInputFieldComponent = ({ id, handleChange }) => {
+const TextInputFieldComponent = ({ id, handleChange, value, type}) => {
   return (
     <div className="text-input-field-div">
       <TextField
@@ -11,6 +11,8 @@ const TextInputFieldComponent = ({ id, handleChange }) => {
         variant="outlined"
         inputProps={{ "aria-label": "Without label" }}
         onChange={handleChange}
+        value={value}
+        type={type}
       />
     </div>
   );
