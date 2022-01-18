@@ -21,15 +21,15 @@ const VisitListComponent = ({ visits }) => {
         <Table aria-label="simple table">
           <TableHead>
             <TableRow>
-              {tableTitle.map((title) => (
-                <TableCell align="center">{title}</TableCell>
+              {tableTitle.map((title, index) => (
+                <TableCell key={`title-${index}`} align="center">{title}</TableCell>
               ))}
               <TableCell></TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {arrVisits.map((visit, index) => (
-              <VisitComponent index={index} visit={visit} />
+              <VisitComponent key={`visit-${index}`} index={index} visit={visit} />
             ))}
           </TableBody>
         </Table>
