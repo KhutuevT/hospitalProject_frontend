@@ -13,16 +13,16 @@ import "./VisitListComponent.scss";
 
 const VisitListComponent = ({ visits }) => {
   const arrVisits = Array.from(visits);
+  const tableTitle = ["Имя","Врач","Дата","Жалобы",]
   return (
     <div className="visit-list-component">
       <TableContainer className="visit-list" component={Paper}>
         <Table aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell align="center">Имя</TableCell>
-              <TableCell align="center">Врач</TableCell>
-              <TableCell align="center">Дата</TableCell>
-              <TableCell align="center">Жалобы</TableCell>
+              {tableTitle.map((title) => (
+                <TableCell align="center">{title}</TableCell>
+              ))}
               <TableCell></TableCell>
             </TableRow>
           </TableHead>
