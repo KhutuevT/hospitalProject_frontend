@@ -9,12 +9,12 @@ import {
   Paper,
 } from "@mui/material";
 import VisitComponent from "../VisitComponent/VisitComponent";
-import moment from "moment";
 import "./VisitListComponent.scss";
 
 const VisitListComponent = ({ visits }) => {
   const arrVisits = Array.from(visits);
   const tableTitle = ["Имя", "Врач", "Дата", "Жалобы"];
+  
   return (
     <div className="visit-list-component">
       <TableContainer className="visit-list" component={Paper}>
