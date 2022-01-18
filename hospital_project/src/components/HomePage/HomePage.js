@@ -7,9 +7,7 @@ import "./HomePage.scss";
 const HomePage = () => {
   const [visits, setVisits] = useState("");
   const getAllVisits = useCallback(async () => {
-    API.getAllVisits().then((res) => {
-      setVisits(res.data.data);
-    });
+    API.getAllVisits().then((res) => setVisits(res.data.data));
   }, []);
 
   useEffect(async () => {

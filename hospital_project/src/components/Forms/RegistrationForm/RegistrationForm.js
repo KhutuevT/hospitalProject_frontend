@@ -20,7 +20,10 @@ const RegistrationForm = () => {
   const setReg = (e) => {
     e.preventDefault();
     const { id, value } = e.target;
-    setRegForm({ ...regForm, [id]: value });
+    setRegForm({
+      ...regForm,
+      [id]: value,
+    });
   };
 
   const [open, setOpen] = useState(false);

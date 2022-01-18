@@ -18,6 +18,7 @@ const CreateVisitForm = ({ getAllVisits }) => {
     date: "",
     complaints: "",
   });
+
   const [open, setOpen] = useState(false);
   const [errMessage, setErrMessage] = useState("");
 
@@ -50,7 +51,10 @@ const CreateVisitForm = ({ getAllVisits }) => {
   };
 
   const setDocName = (event) => {
-    setVisitForm({ ...visitForm, doc_name: event.target.value });
+    setVisitForm({
+      ...visitForm,
+      doc_name: event.target.value,
+    });
   };
 
   const setDate = (full_date) => {

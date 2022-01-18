@@ -16,7 +16,7 @@ const VisitListComponent = ({ visits }) => {
   return (
     <div className="visit-list-component">
       <TableContainer className="visit-list" component={Paper}>
-        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+        <Table aria-label="simple table">
           <TableHead>
             <TableRow>
               <TableCell align="center">Имя</TableCell>

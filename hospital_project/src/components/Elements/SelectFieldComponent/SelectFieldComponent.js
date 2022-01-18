@@ -1,5 +1,5 @@
 import * as React from "react";
-import { MenuItem, FormControl, Select } from "@mui/material/";
+import { MenuItem, FormControl, Select } from "@mui/material";
 import "./SelectFieldComponent.scss";
 
 const SelectFieldComponent = ({ value, handleChange }) => {
@@ -8,6 +8,7 @@ const SelectFieldComponent = ({ value, handleChange }) => {
     "Иванов Иван Иванович",
     "Иванов Иван Иванович",
   ];
+  
   return (
     <FormControl sx={{ m: 1, minWidth: 120 }} className="form-control">
       <Select
