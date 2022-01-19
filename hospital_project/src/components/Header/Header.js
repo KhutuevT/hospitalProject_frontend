@@ -1,11 +1,12 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-import ButtonComponent from "../Elements/ButtonComponent/ButtonComponent"
+import { useHistory } from "react-router";
+import ButtonComponent from "../Elements/ButtonComponent/ButtonComponent";
 import "./Header.scss";
 
 const Header = () => {
   let headerText = "";
-
+  const history = useHistory();
   const location = useLocation();
 
   switch (location.pathname) {
@@ -25,7 +26,10 @@ const Header = () => {
       headerText = "";
       break;
   }
-  
+  const deleteToken = () => {
+    localStorage.removeItem("token");
+    history.push(`/`);
+  };
   return (
     <div className="header-div">
       <div>
@@ -33,7 +37,9 @@ const Header = () => {
         <p className="header-text">{headerText}</p>
       </div>
       <div className="button-exit">
-      {location.pathname === "/home" && <ButtonComponent text={"Выход"} />}
+        {location.pathname === "/home" && (
+          <ButtonComponent text={"Выход"} onClick={deleteToken} />
+        )}
       </div>
     </div>
   );

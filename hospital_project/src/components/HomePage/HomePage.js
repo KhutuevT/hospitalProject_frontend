@@ -11,6 +11,9 @@ const HomePage = () => {
   }, []);
 
   useEffect(() => {
+    if (!localStorage.token) {
+      return;
+    }
     getAllVisits();
   }, []); // check async await
 

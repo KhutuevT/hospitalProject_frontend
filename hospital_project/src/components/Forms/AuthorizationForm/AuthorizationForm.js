@@ -37,7 +37,8 @@ const AuthorizationForm = () => {
       if (loginIsValid) {
         if (passwordIsValid) {
           API.authorization(login, password)
-            .then(() => {
+            .then((result) => {
+              localStorage.setItem('token', result.data.token)
               history.push(`/home`);
             })
             .catch((e) => {
