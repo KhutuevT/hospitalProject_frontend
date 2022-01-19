@@ -37,7 +37,7 @@ const CreateVisitForm = ({ getAllVisits }) => {
           setVisitForm({
             patient_name: "",
             doc_name: "",
-            date: "",
+            date: todayDate,
             complaints: "",
           });
           getAllVisits();

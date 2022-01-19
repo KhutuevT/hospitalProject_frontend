@@ -37,6 +37,12 @@ class API {
       visit,
     });
   };
+
+  deleteVisit = async (id) => {
+    return await axios.delete(this._delete_VisitUrl, {
+      params: { id },
+    });
+  };
 }
 
 export default new API();
