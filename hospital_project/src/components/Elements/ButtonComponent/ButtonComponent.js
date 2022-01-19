@@ -1,10 +1,10 @@
 import * as React from "react";
 import "./ButtonComponent.scss";
 
-const ButtonComponent = ({ text }) => {
+const ButtonComponent = ({ text, onClick }) => {
   return (
     <div className="button-div">
-      <button>{text}</button>
+      <button onClick={onClick}>{text}</button>
     </div>
   );
 };

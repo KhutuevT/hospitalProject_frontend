@@ -10,7 +10,7 @@ const SelectFieldComponent = ({ value, handleChange }) => {
   ];
   
   return (
-    <FormControl sx={{ m: 1, minWidth: 120 }} className="form-control">
+    <FormControl className="form-control">
       <Select
         className="select-field"
         value={value}
