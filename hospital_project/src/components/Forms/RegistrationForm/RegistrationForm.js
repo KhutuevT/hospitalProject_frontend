@@ -1,13 +1,10 @@
 import { React, useState } from "react";
 import { useHistory } from "react-router";
 import API from "../../../controllers/API";
-import Snackbar from "@mui/material/Snackbar";
 import Button from "../../Elements/ButtonComponent/ButtonComponent";
+import SnackbarComponent from "../../Elements/SnackbarComponent/SnackbarComponent";
 import TextInputFieldComponent from "../../Elements/TextInputFieldComponent/TextInputFieldComponent";
 import "./RegistrationForm.scss";
-
-const vertical = "top";
-const horizontal = "center";
 
 const RegistrationForm = () => {
   const history = useHistory();
@@ -26,19 +23,10 @@ const RegistrationForm = () => {
     });
   };
 
-  const [open, setOpen] = useState(false);
-  const [errMessage, setErrMessage] = useState("");
-
-  const handleClick = () => {
-    setOpen(true);
-  };
-
-  const handleClose = (event, reason) => {
-    if (reason === "clickaway") {
-      return;
-    }
-    setOpen(false);
-  };
+  const [errMessages, setErrMessages] = useState({
+    isOpen: false,
+    errMessage: "",
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -53,52 +41,51 @@ const RegistrationForm = () => {
       if (loginIsValid) {
         if (passwordIsValid) {
           if (password === reapeatPassword) {
-            setOpen(false);
             API.registration(login, password)
               .then((result) => {
                 history.push(`/home`);
               })
               .catch((e) => {
-                setOpen(false);
-                setErrMessage("Такой логин уже используется!");
-                handleClick();
+                setErrMessages({
+                  isOpen: true,
+                  errMessage: "Такой логин уже используется!",
+                });
               });
           } else {
-            setOpen(false);
-            setErrMessage("Пароли не совпадают!");
-            handleClick();
+            setErrMessages({
+              isOpen: true,
+              errMessage: "Пароли не совпадают!",
+            });
           }
         } else {
-          setOpen(false);
-          setErrMessage(
-            `Пароль должен: - содержать только латинские символы
-            - быть длиной не менее 6 символов 
-            - содержать хотя бы одну цифру
-            - не содержать пробелы`
-          );
-          handleClick();
+          setErrMessages({
+            isOpen: true,
+            errMessage: `Пароль должен: - содержать только латинские символы
+              - быть длиной не менее 6 символов
+              - содержать хотя бы одну цифру
+              - не содержать пробелы`,
+          });
         }
       } else {
-        setOpen(false);
-        setErrMessage("Длина логина должна быть больше 6 символов!");
-        handleClick();
+        setErrMessages({
+          isOpen: true,
+          errMessage: "Длина логина должна быть больше 6 символов!",
+        });
       }
     } else {
-      setOpen(false);
-      setErrMessage("Форма не должна содержать пустые поля!");
-      handleClick();
+      setErrMessages({
+        isOpen: true,
+        errMessage: "Форма не должна содержать пустые поля!",
+      });
     }
   };
 
   return (
     <div className="registration-field-div">
       <div>
-        <Snackbar
-          anchorOrigin={{ vertical, horizontal }}
-          open={open}
-          autoHideDuration={6000}
-          onClose={handleClose}
-          message={errMessage}
+        <SnackbarComponent
+          errMessages={errMessages}
+          setErrMessages={setErrMessages}
         />
       </div>
       <form onSubmit={handleSubmit}>

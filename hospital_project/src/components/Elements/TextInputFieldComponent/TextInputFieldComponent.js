@@ -4,7 +4,6 @@ import "./TextInputFieldComponent.scss";
 
 const TextInputFieldComponent = ({ id, handleChange, value, type}) => {
   return (
-    <div className="text-input-field-div">
       <TextField
         className="text-input-field"
         id={id}
@@ -14,7 +13,6 @@ const TextInputFieldComponent = ({ id, handleChange, value, type}) => {
         value={value}
         type={type}
       />
-    </div>
   );
 };
 

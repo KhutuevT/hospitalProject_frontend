@@ -10,14 +10,14 @@ const HomePage = () => {
     API.getAllVisits().then((res) => setVisits(res.data.data));
   }, []);
 
-  useEffect( () => {
+  useEffect(() => {
     getAllVisits();
   }, []); // check async await
 
   return (
     <div className="home-page">
       <CreateVisitForm getAllVisits={getAllVisits} />
-      <VisitListComponent visits={visits} />
+      <VisitListComponent visits={visits} getAllVisits={getAllVisits} />
     </div>
   );
 };

@@ -1,8 +1,9 @@
 import React from "react";
 import { TableCell, TableRow } from "@mui/material";
+import EditVisitModalForm from "../Forms/EditVisitModalForm/EditVisitModalForm";
 import moment from "moment";
 
-const VisitComponent = ({ index, visit }) => {
+const VisitComponent = ({ index, visit, getAllVisits }) => {
   const { patient_name, doc_name, date, complaints } = visit;
 
   return (
@@ -17,7 +18,11 @@ const VisitComponent = ({ index, visit }) => {
       <TableCell align="center">
         <div className="button-div">
           <img className="delete-img" src="/images/Delete.svg" alt="" />
-          <img className="edit-img" src="/images/Edit.svg" alt="" />
+          {/* <img className="edit-img" src="/images/Edit.svg" alt="" /> */}
+          <EditVisitModalForm
+            oldVisitDate={visit}
+            getAllVisits={getAllVisits}
+          />
         </div>
       </TableCell>
     </TableRow>

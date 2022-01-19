@@ -1,17 +1,12 @@
-.text-input-field-div {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.text-input-field {
+  background-color: white;
+  border-radius: 5px;
+  height: 40px;
+  width: 100%;
 
-  .text-input-field {
-    background-color: white;
-    border-radius: 5px;
+  input {
+    padding: 0px;
     height: 40px;
-    
-    input {
-      padding: 0px;
-      height: 40px;
-      padding-left: 5px;
-    }
+    padding-left: 5px;
   }
 }

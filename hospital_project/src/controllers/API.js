@@ -26,9 +26,15 @@ class API {
 
   getAllVisits = async () => await axios.get(this._get_AllVisitsUrl);
 
-  addNewVisit = async (visits) => {
+  addNewVisit = async (visit) => {
     return await axios.post(this._post_addNewVisitsUrl, {
-      visits,
+      visit,
+    });
+  };
+
+  updateVisit = async (visit) => {
+    return await axios.patch(this._patch_updateVisitUrl, {
+      visit,
     });
   };
 }

@@ -1,17 +1,14 @@
 import { React, useState } from "react";
 import API from "../../../controllers/API";
 import moment from "moment";
-import Snackbar from "@mui/material/Snackbar";
 import ButtonComponent from "../../Elements/ButtonComponent/ButtonComponent";
+import SnackbarComponent from "../../Elements/SnackbarComponent/SnackbarComponent";
 import DateFieldComponent from "../../Elements/DateFieldComponent/DateFieldComponent";
 import SelectFieldComponent from "../../Elements/SelectFieldComponent/SelectFieldComponent";
 import TextInputFieldComponent from "../../Elements/TextInputFieldComponent/TextInputFieldComponent";
 import "./CreateVisitForm.scss";
 
-const vertical = "top";
-const horizontal = "center";
-
-const todayDate = moment().format()
+const todayDate = moment().format();
 
 const CreateVisitForm = ({ getAllVisits }) => {
   const [visitForm, setVisitForm] = useState({
@@ -21,8 +18,10 @@ const CreateVisitForm = ({ getAllVisits }) => {
     complaints: "",
   });
 
-  const [open, setOpen] = useState(false);
-  const [errMessage, setErrMessage] = useState("");
+  const [errMessages, setErrMessages] = useState({
+    isOpen: false,
+    errMessage: "",
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -35,7 +34,6 @@ const CreateVisitForm = ({ getAllVisits }) => {
     ) {
       API.addNewVisit(visitForm)
         .then((result) => {
-          handleClose();
           setVisitForm({
             patient_name: "",
             doc_name: "",
@@ -46,9 +44,10 @@ const CreateVisitForm = ({ getAllVisits }) => {
         })
         .catch((err) => {}); //add error log
     } else {
-      handleClose();
-      setErrMessage("Форма не должна содержать пустые поля!");
-      handleClick();
+      setErrMessages({
+        isOpen: true,
+        errMessage: "Форма не должна содержать пустые поля!",
+      });
     }
   };
 
@@ -76,26 +75,12 @@ const CreateVisitForm = ({ getAllVisits }) => {
     });
   };
 
-  const handleClick = () => {
-    setOpen(true);
-  };
-
-  const handleClose = (event, reason) => {
-    if (reason === "clickaway") {
-      return;
-    }
-    setOpen(false);
-  };
-
   return (
     <div className="create-visit-div">
       <div>
-        <Snackbar
-          anchorOrigin={{ vertical, horizontal }}
-          open={open}
-          autoHideDuration={6000}
-          onClose={handleClose}
-          message={errMessage}
+        <SnackbarComponent
+          errMessages={errMessages}
+          setErrMessages={setErrMessages}
         />
       </div>
       <form onSubmit={handleSubmit} className="create-visit-form">

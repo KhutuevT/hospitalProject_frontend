@@ -1,19 +1,18 @@
 import { React, useState } from "react";
 import { useHistory } from "react-router";
 import API from "../../../controllers/API";
-import Snackbar from "@mui/material/Snackbar";
 import ButtonComponent from "../../Elements/ButtonComponent/ButtonComponent";
+import SnackbarComponent from "../../Elements/SnackbarComponent/SnackbarComponent";
 import TextInputFieldComponent from "../../Elements/TextInputFieldComponent/TextInputFieldComponent";
 import "./AuthorizationForm.scss";
-
-const vertical = "top";
-const horizontal = "center";
 
 const AuthorizationForm = () => {
   const history = useHistory();
 
-  const [open, setOpen] = useState(false);
-  const [errMessage, setErrMessage] = useState("");
+  const [errMessages, setErrMessages] = useState({
+    isOpen: false,
+    errMessage: "",
+  });
 
   const [authForm, setauthForm] = useState({
     login: "",
@@ -23,21 +22,10 @@ const AuthorizationForm = () => {
   const setAuth = (e) => {
     e.preventDefault();
     const { id, value } = e.target;
-    setauthForm({ 
-      ...authForm, 
-      [id]: value 
+    setauthForm({
+      ...authForm,
+      [id]: value,
     });
-  };
-
-  const handleClick = () => {
-    setOpen(true);
-  };
-
-  const handleClose = (event, reason) => {
-    if (reason === "clickaway") {
-      return;
-    }
-    setOpen(false);
   };
 
   const handleSubmit = (e) => {
@@ -54,52 +42,52 @@ const AuthorizationForm = () => {
             })
             .catch((e) => {
               const errorCode = e.response.data.code;
-              setOpen(false);
               switch (errorCode) {
                 case 301:
-                  setErrMessage("Неправильный пароль");
+                  setErrMessages({
+                    isOpen: true,
+                    errMessage: "Неправильный пароль",
+                  });
                   break;
                 case 302:
-                  setErrMessage("Пользователя с данным логином несуществует");
+                  setErrMessages({
+                    isOpen: true,
+                    errMessage: "Пользователя с данным логином несуществует",
+                  });
                   break;
                 default:
                   break;
               }
-              handleClick();
             });
         } else {
-          setOpen(false);
-          setErrMessage(
-            `Пароль должен: - содержать только латинские символы
-            - быть длиной не менее 6 символов 
-            - содержать хотя бы одну цифру
-            - не содержать пробелы`
-          );
-          handleClick();
+          setErrMessages({
+            isOpen: true,
+            errMessage: `Пароль должен: - содержать только латинские символы
+              - быть длиной не менее 6 символов
+              - содержать хотя бы одну цифру
+              - не содержать пробелы`,
+          });
         }
       } else {
-        setOpen(false);
-        setErrMessage("Длина логина должна быть больше 6 символов!");
-        handleClick();
+        setErrMessages({
+          isOpen: true,
+          errMessage: "Длина логина должна быть больше 6 символов!",
+        });
       }
     } else {
-      setOpen(false);
-      setErrMessage("Форма не должна содержать пустые поля!");
-      handleClick();
+      setErrMessages({
+        isOpen: true,
+        errMessage: "Форма не должна содержать пустые поля!",
+      });
     }
   };
 
   return (
     <div className="authorization-field-div">
-      <div>
-        <Snackbar
-          anchorOrigin={{ vertical, horizontal }}
-          open={open}
-          autoHideDuration={6000}
-          onClose={handleClose}
-          message={errMessage}
-        />
-      </div>
+      <SnackbarComponent
+        errMessages={errMessages}
+        setErrMessages={setErrMessages}
+      />
       <form onSubmit={handleSubmit}>
         <div className="form-title">
           <p>Войти в ситему</p>
