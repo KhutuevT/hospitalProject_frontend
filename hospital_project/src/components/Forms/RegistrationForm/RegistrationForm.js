@@ -43,6 +43,7 @@ const RegistrationForm = () => {
           if (password === reapeatPassword) {
             API.registration(login, password)
               .then((result) => {
+                localStorage.setItem('token', result.data.token)
                 history.push(`/home`);
               })
               .catch((e) => {

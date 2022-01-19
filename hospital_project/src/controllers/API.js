@@ -24,22 +24,35 @@ class API {
     });
   };
 
-  getAllVisits = async () => await axios.get(this._get_AllVisitsUrl);
+  getAllVisits = async () =>
+    await axios.get(this._get_AllVisitsUrl, {
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("token"),
+      },
+    });
 
   addNewVisit = async (visit) => {
-    return await axios.post(this._post_addNewVisitsUrl, {
-      visit,
+    return await axios.post(this._post_addNewVisitsUrl, visit, {
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("token"),
+      },
     });
   };
 
   updateVisit = async (visit) => {
     return await axios.patch(this._patch_updateVisitUrl, {
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("token"),
+      },
       visit,
     });
   };
 
   deleteVisit = async (id) => {
     return await axios.delete(this._delete_VisitUrl, {
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("token"),
+      },
       params: { id },
     });
   };
