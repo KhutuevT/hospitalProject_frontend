@@ -1,14 +1,14 @@
 import { React, useState } from "react";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import Modal from "@mui/material/Modal";
 import moment from "moment";
-import SnackbarComponent from "../../Elements/SnackbarComponent/SnackbarComponent";
+import API from "../../../controllers/API";
+import Box from "@mui/material/Box";
+import Modal from "@mui/material/Modal";
+import Typography from "@mui/material/Typography";
 import ButtonComponent from "../../Elements/ButtonComponent/ButtonComponent";
+import SnackbarComponent from "../../Elements/SnackbarComponent/SnackbarComponent";
 import DateFieldComponent from "../../Elements/DateFieldComponent/DateFieldComponent";
 import SelectFieldComponent from "../../Elements/SelectFieldComponent/SelectFieldComponent";
 import TextInputFieldComponent from "../../Elements/TextInputFieldComponent/TextInputFieldComponent";
-import API from "../../../controllers/API";
 import "./EditVisitModalForm.scss";
 
 const style = {
@@ -38,7 +38,7 @@ const EditVisitModalForm = ({ oldVisitDate, getAllVisits }) => {
     doc_name: oldVisitDate.doc_name,
     date: oldVisitDate.date,
     complaints: oldVisitDate.complaints,
-  });
+  }); //How destructure????
 
   const handleSubmit = () => {
     const { patient_name, doc_name, date, complaints } = visitForm;
@@ -85,6 +85,7 @@ const EditVisitModalForm = ({ oldVisitDate, getAllVisits }) => {
       [id]: value,
     });
   };
+
   return (
     <div>
       <SnackbarComponent

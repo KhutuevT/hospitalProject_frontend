@@ -1,8 +1,8 @@
 import { React, useState } from "react";
 import { useHistory } from "react-router";
 import API from "../../../controllers/API";
-import SnackbarComponent from "../../Elements/SnackbarComponent/SnackbarComponent";
 import ButtonComponent from "../../Elements/ButtonComponent/ButtonComponent";
+import SnackbarComponent from "../../Elements/SnackbarComponent/SnackbarComponent";
 import TextInputFieldComponent from "../../Elements/TextInputFieldComponent/TextInputFieldComponent";
 import "./AuthorizationForm.scss";
 
