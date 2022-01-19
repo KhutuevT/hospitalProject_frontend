@@ -11,14 +11,12 @@ const HomePage = () => {
   }, []);
 
   useEffect(() => {
-    if(!localStorage.token){
-      return
+    if (!localStorage.token) {
+      return;
     }
     getAllVisits();
   }, []); // check async await
 
-
- 
   return (
     <div className="home-page">
       <CreateVisitForm getAllVisits={getAllVisits} />
