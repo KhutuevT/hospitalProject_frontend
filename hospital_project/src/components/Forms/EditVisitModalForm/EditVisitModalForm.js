@@ -41,7 +41,6 @@ const EditVisitModalForm = ({ oldVisitDate, getAllVisits }) => {
   });
 
   const handleSubmit = () => {
-    console.log("1213123");
     const { patient_name, doc_name, date, complaints } = visitForm;
     if (
       patient_name.trim().length !== 0 &&
@@ -54,9 +53,7 @@ const EditVisitModalForm = ({ oldVisitDate, getAllVisits }) => {
           getAllVisits();
           handleClose();
         })
-        .catch((err) => {
-          console.log(err);
-        });
+        .catch((err) => {});
     } else {
       setErrMessages({
         isOpen: true,

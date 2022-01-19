@@ -8,7 +8,7 @@ const SelectFieldComponent = ({ value, handleChange }) => {
     "Иванов Иван Иванович",
     "Иванов Иван Иванович",
   ];
-  
+
   return (
     <FormControl className="form-control">
       <Select
@@ -19,7 +19,9 @@ const SelectFieldComponent = ({ value, handleChange }) => {
         inputProps={{ "aria-label": "Without label" }}
       >
         {doc_names.map((doc_name, index) => (
-          <MenuItem key={`menu-item${index}`} value={doc_name}>{doc_name}</MenuItem>
+          <MenuItem key={`menu-item${index}`} value={doc_name}>
+            {doc_name}
+          </MenuItem>
         ))}
       </Select>
     </FormControl>

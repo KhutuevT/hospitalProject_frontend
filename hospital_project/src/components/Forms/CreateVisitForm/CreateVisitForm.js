@@ -8,7 +8,7 @@ import SelectFieldComponent from "../../Elements/SelectFieldComponent/SelectFiel
 import TextInputFieldComponent from "../../Elements/TextInputFieldComponent/TextInputFieldComponent";
 import "./CreateVisitForm.scss";
 
-const todayDate = moment().format()
+const todayDate = moment().format();
 
 const CreateVisitForm = ({ getAllVisits }) => {
   const [visitForm, setVisitForm] = useState({
@@ -78,10 +78,10 @@ const CreateVisitForm = ({ getAllVisits }) => {
   return (
     <div className="create-visit-div">
       <div>
-      <SnackbarComponent
-        errMessages={errMessages}
-        setErrMessages={setErrMessages}
-      />
+        <SnackbarComponent
+          errMessages={errMessages}
+          setErrMessages={setErrMessages}
+        />
       </div>
       <form onSubmit={handleSubmit} className="create-visit-form">
         <div className="form-div">

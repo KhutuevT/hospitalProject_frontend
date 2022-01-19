@@ -46,13 +46,13 @@ const AuthorizationForm = () => {
                 case 301:
                   setErrMessages({
                     isOpen: true,
-                    errMessage: 'Неправильный пароль'
+                    errMessage: "Неправильный пароль",
                   });
                   break;
                 case 302:
                   setErrMessages({
                     isOpen: true,
-                    errMessage: 'Пользователя с данным логином несуществует'
+                    errMessage: "Пользователя с данным логином несуществует",
                   });
                   break;
                 default:
@@ -62,10 +62,10 @@ const AuthorizationForm = () => {
         } else {
           setErrMessages({
             isOpen: true,
-            errMessage:  `Пароль должен: - содержать только латинские символы
+            errMessage: `Пароль должен: - содержать только латинские символы
               - быть длиной не менее 6 символов
               - содержать хотя бы одну цифру
-              - не содержать пробелы`
+              - не содержать пробелы`,
           });
         }
       } else {

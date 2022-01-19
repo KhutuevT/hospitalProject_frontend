@@ -6,7 +6,6 @@ import SnackbarComponent from "../../Elements/SnackbarComponent/SnackbarComponen
 import TextInputFieldComponent from "../../Elements/TextInputFieldComponent/TextInputFieldComponent";
 import "./RegistrationForm.scss";
 
-
 const RegistrationForm = () => {
   const history = useHistory();
   const [regForm, setRegForm] = useState({
@@ -49,22 +48,22 @@ const RegistrationForm = () => {
               .catch((e) => {
                 setErrMessages({
                   isOpen: true,
-                  errMessage: 'Такой логин уже используется!'
+                  errMessage: "Такой логин уже используется!",
                 });
               });
           } else {
             setErrMessages({
               isOpen: true,
-              errMessage: 'Пароли не совпадают!'
+              errMessage: "Пароли не совпадают!",
             });
           }
         } else {
           setErrMessages({
             isOpen: true,
-            errMessage:  `Пароль должен: - содержать только латинские символы
+            errMessage: `Пароль должен: - содержать только латинские символы
               - быть длиной не менее 6 символов
               - содержать хотя бы одну цифру
-              - не содержать пробелы`
+              - не содержать пробелы`,
           });
         }
       } else {
@@ -84,10 +83,10 @@ const RegistrationForm = () => {
   return (
     <div className="registration-field-div">
       <div>
-      <SnackbarComponent
-        errMessages={errMessages}
-        setErrMessages={setErrMessages}
-      />
+        <SnackbarComponent
+          errMessages={errMessages}
+          setErrMessages={setErrMessages}
+        />
       </div>
       <form onSubmit={handleSubmit}>
         <div className="form-title">
