@@ -1,0 +1,15 @@
+.form-div-button {
+  display: flex;
+  align-items: flex-end;
+  justify-content: end;
+
+  div {
+    margin-left: 20px;
+  }
+
+  div + div {
+    button {
+      background-color: rgba(197, 233, 255, 0.72);
+    }
+  }
+}

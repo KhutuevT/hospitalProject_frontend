@@ -1,10 +1,11 @@
 import React from "react";
 import { TableCell, TableRow } from "@mui/material";
 import EditVisitModalForm from "../Forms/EditVisitModalForm/EditVisitModalForm";
+import DeleteVisitModalForm from "../Forms/DeleteVisitModalForm/DeleteVisitModalForm";
 import moment from "moment";
 
 const VisitComponent = ({ index, visit, getAllVisits }) => {
-  const { patient_name, doc_name, date, complaints } = visit;
+  const { _id, patient_name, doc_name, date, complaints } = visit;
 
   return (
     <TableRow
@@ -17,8 +18,7 @@ const VisitComponent = ({ index, visit, getAllVisits }) => {
       <TableCell align="center">{complaints}</TableCell>
       <TableCell align="center">
         <div className="button-div">
-          <img className="delete-img" src="/images/Delete.svg" alt="" />
-          {/* <img className="edit-img" src="/images/Edit.svg" alt="" /> */}
+          <DeleteVisitModalForm id={_id} getAllVisits={getAllVisits} />
           <EditVisitModalForm
             oldVisitDate={visit}
             getAllVisits={getAllVisits}
