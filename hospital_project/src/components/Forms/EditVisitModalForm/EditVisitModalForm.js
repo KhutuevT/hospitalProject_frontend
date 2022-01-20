@@ -22,6 +22,11 @@ const style = {
   boxShadow: 24,
   p: 4,
 };
+const doc_names = [
+  "Иванов Иван Иванович",
+  "Петров Иван Иванович",
+  "Иванов Иван Иванович",
+];
 
 const EditVisitModalForm = ({ oldVisitDate, getAllVisits }) => {
   const [open, setOpen] = useState(false);
@@ -31,7 +36,7 @@ const EditVisitModalForm = ({ oldVisitDate, getAllVisits }) => {
     isOpen: false,
     errMessage: "",
   });
-
+  
   const [visitForm, setVisitForm] = useState({
     id: oldVisitDate._id,
     patient_name: oldVisitDate.patient_name,
@@ -39,8 +44,8 @@ const EditVisitModalForm = ({ oldVisitDate, getAllVisits }) => {
     date: oldVisitDate.date,
     complaints: oldVisitDate.complaints,
   }); //How destructure????
-
   const handleSubmit = () => {
+    visitForm.doc_name = doc_names[visitForm.doc_name];
     const { patient_name, doc_name, date, complaints } = visitForm;
     if (
       patient_name.trim().length !== 0 &&
@@ -126,8 +131,10 @@ const EditVisitModalForm = ({ oldVisitDate, getAllVisits }) => {
               <div className="form-div">
                 <label>Врач</label>
                 <SelectFieldComponent
-                  value={visitForm.doc_name}
+                  // value={visitForm.doc_name}
+                  value={1}
                   handleChange={setDocName}
+                  items={doc_names}
                 />
               </div>
               <div className="form-div">
@@ -142,21 +149,21 @@ const EditVisitModalForm = ({ oldVisitDate, getAllVisits }) => {
                   value={visitForm.complaints}
                 />
               </div>
-              <div className="form-div-button">
-                <ButtonComponent
-                  text={"Cancel"}
-                  onClick={() => {
-                    handleClose();
-                  }}
-                />
-                <ButtonComponent
-                  text={"Save"}
-                  onClick={() => {
-                    handleSubmit();
-                  }}
-                />
-              </div>
             </form>
+            <div className="form-div-button">
+              <ButtonComponent
+                text={"Cancel"}
+                onClick={() => {
+                  handleClose();
+                }}
+              />
+              <ButtonComponent
+                text={"Save"}
+                onClick={() => {
+                  handleSubmit();
+                }}
+              />
+            </div>
           </Box>
         </Modal>
       </div>

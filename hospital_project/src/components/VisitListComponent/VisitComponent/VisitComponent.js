@@ -1,7 +1,7 @@
 import React from "react";
 import { TableCell, TableRow } from "@mui/material";
-import EditVisitModalForm from "../Forms/EditVisitModalForm/EditVisitModalForm";
-import DeleteVisitModalForm from "../Forms/DeleteVisitModalForm/DeleteVisitModalForm";
+import EditVisitModalForm from "../../Forms/EditVisitModalForm/EditVisitModalForm";
+import DeleteVisitModalForm from "../../Forms/DeleteVisitModalForm/DeleteVisitModalForm";
 import moment from "moment";
 
 const VisitComponent = ({ index, visit, getAllVisits }) => {
@@ -14,7 +14,7 @@ const VisitComponent = ({ index, visit, getAllVisits }) => {
     >
       <TableCell align="center">{patient_name}</TableCell>
       <TableCell align="center">{doc_name}</TableCell>
-      <TableCell align="center">{moment(date).format("MM-DD-YYYY")}</TableCell>
+      <TableCell align="center">{moment(date).format("DD-MM-YYYY")}</TableCell>
       <TableCell align="center">{complaints}</TableCell>
       <TableCell align="center">
         <div className="button-div">
