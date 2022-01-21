@@ -49,7 +49,6 @@ const EditVisitModalForm = ({ oldVisitDate, getAllVisits }) => {
   const handleSubmit = () => {
     visitForm.doc_name = doc_names[visitForm.doc_name]
     const { patient_name, doc_name, date, complaints } = visitForm;
-    console.log(visitForm)
     if (
       patient_name.trim().length !== 0 &&
       doc_name.trim().length !== 0 &&
@@ -71,7 +70,6 @@ const EditVisitModalForm = ({ oldVisitDate, getAllVisits }) => {
   };
 
   const setDocName = (event) => {
-    console.log(event.target.value)
     setVisitForm({
       ...visitForm,
       doc_name: event.target.value,
