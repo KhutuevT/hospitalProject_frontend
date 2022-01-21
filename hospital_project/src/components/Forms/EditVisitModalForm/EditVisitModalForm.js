@@ -4,6 +4,7 @@ import API from "../../../controllers/API";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Typography from "@mui/material/Typography";
+import { MenuItem, FormControl, Select } from "@mui/material";
 import ButtonComponent from "../../Elements/ButtonComponent/ButtonComponent";
 import SnackbarComponent from "../../Elements/SnackbarComponent/SnackbarComponent";
 import DateFieldComponent from "../../Elements/DateFieldComponent/DateFieldComponent";
@@ -44,9 +45,11 @@ const EditVisitModalForm = ({ oldVisitDate, getAllVisits }) => {
     date: oldVisitDate.date,
     complaints: oldVisitDate.complaints,
   }); //How destructure????
+  
   const handleSubmit = () => {
-    visitForm.doc_name = doc_names[visitForm.doc_name];
+    visitForm.doc_name = doc_names[visitForm.doc_name]
     const { patient_name, doc_name, date, complaints } = visitForm;
+    console.log(visitForm)
     if (
       patient_name.trim().length !== 0 &&
       doc_name.trim().length !== 0 &&
@@ -68,6 +71,7 @@ const EditVisitModalForm = ({ oldVisitDate, getAllVisits }) => {
   };
 
   const setDocName = (event) => {
+    console.log(event.target.value)
     setVisitForm({
       ...visitForm,
       doc_name: event.target.value,
@@ -130,12 +134,26 @@ const EditVisitModalForm = ({ oldVisitDate, getAllVisits }) => {
               </div>
               <div className="form-div">
                 <label>Врач</label>
-                <SelectFieldComponent
-                  // value={visitForm.doc_name}
-                  value={1}
+                {/* <SelectFieldComponent
+                  value={visitForm.doc_names || ''}
                   handleChange={setDocName}
                   items={doc_names}
-                />
+                /> TODO Fixed! */}
+                <FormControl className="form-control">
+                  <Select
+                      className="select-field"
+                        value={visitForm.doc_names || ''}
+                        onChange={setDocName}
+                        displayEmpty
+                        inputProps={{ "aria-label": "Without label" }}
+                          >
+                            {doc_names.map((name, index) => (
+                          <MenuItem key={`menu-item${index}`} value={index}>
+                            {name}
+                         </MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
               </div>
               <div className="form-div">
                 <label>Дата</label>
