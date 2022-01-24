@@ -36,7 +36,6 @@ const SortVisitsComponent = ({ visits, getAllVisits, setVisits }) => {
   const [sortDirectionItem, setSortDirectionItem] = useState("asc");
 
   const sortArrVisits = (field, direction) => {
-    console.log(field, direction);
     visits.sort((a, b) =>
       a[field] > b[field] ? 1 : a[field] < b[field] ? -1 : 0
     );
