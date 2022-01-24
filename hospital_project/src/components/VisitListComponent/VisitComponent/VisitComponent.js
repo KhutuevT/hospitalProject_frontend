@@ -9,6 +9,7 @@ const VisitComponent = ({ index, visit, getAllVisits }) => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  
   return (
     <TableRow
       key={index}
