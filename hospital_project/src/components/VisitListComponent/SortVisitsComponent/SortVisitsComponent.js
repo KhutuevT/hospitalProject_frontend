@@ -47,7 +47,6 @@ const SortVisitsComponent = ({ visits, getAllVisits, setVisits }) => {
 
   const setDataSortField = (event) => {
     setSortFieldsItem(event.target.value);
-    console.log("event.target.value", event.target.value);
     if (event.target.value !== "none") {
       sortArrVisits(event.target.value, sortDirectionItem);
     } else getAllVisits();
