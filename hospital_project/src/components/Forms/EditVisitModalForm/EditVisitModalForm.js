@@ -50,6 +50,7 @@ const EditVisitModalForm = ({ oldVisitDate, getAllVisits }) => {
     date: oldVisitDate.date,
     complaints: oldVisitDate.complaints,
   }); //How destructure????
+
   const handleSubmit = () => {
     const { patient_name, doc_name, date, complaints } = visitForm;
     if (
