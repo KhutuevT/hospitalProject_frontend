@@ -5,9 +5,10 @@ import VisitListComponent from "../VisitListComponent/VisitListComponent";
 import "./HomePage.scss";
 
 const HomePage = () => {
-  const [visits, setVisits] = useState("");
+  const [visits, setVisits] = useState([]);
+
   const getAllVisits = useCallback(async () => {
-    API.getAllVisits().then((res) => setVisits(res.data.data));
+    await API.getAllVisits().then((res) => setVisits(res.data.data));
   }, []);
 
   useEffect(() => {
@@ -20,7 +21,11 @@ const HomePage = () => {
   return (
     <div className="home-page">
       <CreateVisitForm getAllVisits={getAllVisits} />
-      <VisitListComponent visits={visits} getAllVisits={getAllVisits} />
+      <VisitListComponent
+        visits={visits}
+        getAllVisits={getAllVisits}
+        setVisits={setVisits}
+      />
     </div>
   );
 };

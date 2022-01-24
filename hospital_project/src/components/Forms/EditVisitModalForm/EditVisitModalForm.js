@@ -1,8 +1,8 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import moment from "moment";
-import API from "../../../controllers/API";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
+import API from "../../../controllers/API";
 import Typography from "@mui/material/Typography";
 import ButtonComponent from "../../Elements/ButtonComponent/ButtonComponent";
 import SnackbarComponent from "../../Elements/SnackbarComponent/SnackbarComponent";
@@ -11,44 +11,53 @@ import SelectFieldComponent from "../../Elements/SelectFieldComponent/SelectFiel
 import TextInputFieldComponent from "../../Elements/TextInputFieldComponent/TextInputFieldComponent";
 import "./EditVisitModalForm.scss";
 
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 400,
-  bgcolor: "background.paper",
-  border: "2px solid #000",
-  boxShadow: 24,
-  p: 4,
-};
+const doc_names = [
+  {
+    inputName: "Иванов Иван Иванович",
+  },
+  {
+    inputName: "Петров Иван Иванович",
+  },
+  {
+    inputName: "Иванов Иван Иванович",
+  },
+];
 
-const EditVisitModalForm = ({ oldVisitDate, getAllVisits }) => {
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+const EditVisitModalForm = ({
+  oldVisitDate,
+  getAllVisits,
+  handleClose,
+}) => {
+  const { _id, patient_name, doc_name, date, complaints } = oldVisitDate;
   const [errMessages, setErrMessages] = useState({
     isOpen: false,
     errMessage: "",
   });
 
   const [visitForm, setVisitForm] = useState({
-    id: oldVisitDate._id,
-    patient_name: oldVisitDate.patient_name,
-    doc_name: oldVisitDate.doc_name,
-    date: oldVisitDate.date,
-    complaints: oldVisitDate.complaints,
-  }); //How destructure????
+    new_patient_name: patient_name,
+    new_doc_name: doc_name,
+    new_date: date,
+    new_complaints: complaints,
+  });
+
+  const { new_patient_name, new_doc_name, new_date, new_complaints } =
+    visitForm;
 
   const handleSubmit = () => {
-    const { patient_name, doc_name, date, complaints } = visitForm;
     if (
-      patient_name.trim().length !== 0 &&
-      doc_name.trim().length !== 0 &&
-      date.trim().length !== 0 &&
-      complaints.trim().length !== 0
+      new_patient_name.trim().length !== 0 &&
+      new_doc_name.trim().length !== 0 &&
+      new_date.trim().length !== 0 &&
+      new_complaints.trim().length !== 0
     ) {
-      API.updateVisit(visitForm)
+      API.updateVisit({
+        _id,
+        patient_name: new_patient_name,
+        doc_name: new_doc_name,
+        date: new_date,
+        complaints: new_complaints,
+      })
         .then(() => {
           getAllVisits();
           handleClose();
@@ -65,7 +74,7 @@ const EditVisitModalForm = ({ oldVisitDate, getAllVisits }) => {
   const setDocName = (event) => {
     setVisitForm({
       ...visitForm,
-      doc_name: event.target.value,
+      new_doc_name: event.target.value,
     });
   };
 
@@ -73,7 +82,7 @@ const EditVisitModalForm = ({ oldVisitDate, getAllVisits }) => {
     const date = moment(full_date).format();
     setVisitForm({
       ...visitForm,
-      date,
+      new_date,
     });
   };
 
@@ -92,20 +101,14 @@ const EditVisitModalForm = ({ oldVisitDate, getAllVisits }) => {
         errMessages={errMessages}
         setErrMessages={setErrMessages}
       />
-      <img
-        onClick={handleOpen}
-        className="edit-img"
-        src="/images/Edit.svg"
-        alt=" "
-      />
       <div className="edit-modal-div">
         <Modal
-          open={open}
+          open={true}
           onClose={handleClose}
           aria-labelledby="modal-modal-title"
           aria-describedby="modal-modal-description"
         >
-          <Box sx={style}>
+          <Box className="Box">
             <Typography
               className="modal-title"
               id="modal-modal-title"
@@ -118,45 +121,46 @@ const EditVisitModalForm = ({ oldVisitDate, getAllVisits }) => {
               <div className="form-div">
                 <label>Имя</label>
                 <TextInputFieldComponent
-                  id={"patient_name"}
+                  id={"new_patient_name"}
                   handleChange={setVisit}
-                  value={visitForm.patient_name}
+                  value={new_patient_name}
                 />
               </div>
               <div className="form-div">
                 <label>Врач</label>
                 <SelectFieldComponent
-                  value={visitForm.doc_name}
+                  value={new_doc_name}
                   handleChange={setDocName}
+                  items={doc_names}
                 />
               </div>
               <div className="form-div">
                 <label>Дата</label>
-                <DateFieldComponent value={visitForm.date} setValue={setDate} />
+                <DateFieldComponent value={new_date} setValue={setDate} />
               </div>
               <div className="form-div">
                 <label>Жалобы</label>
                 <TextInputFieldComponent
-                  id={"complaints"}
+                  id={"new_complaints"}
                   handleChange={setVisit}
-                  value={visitForm.complaints}
-                />
-              </div>
-              <div className="form-div-button">
-                <ButtonComponent
-                  text={"Cancel"}
-                  onClick={() => {
-                    handleClose();
-                  }}
-                />
-                <ButtonComponent
-                  text={"Save"}
-                  onClick={() => {
-                    handleSubmit();
-                  }}
+                  value={new_complaints}
                 />
               </div>
             </form>
+            <div className="form-div-button">
+              <ButtonComponent
+                text={"Cancel"}
+                onClick={() => {
+                  handleClose();
+                }}
+              />
+              <ButtonComponent
+                text={"Save"}
+                onClick={() => {
+                  handleSubmit();
+                }}
+              />
+            </div>
           </Box>
         </Modal>
       </div>

@@ -9,6 +9,17 @@ import TextInputFieldComponent from "../../Elements/TextInputFieldComponent/Text
 import "./CreateVisitForm.scss";
 
 const todayDate = moment().format();
+const doc_names = [
+  {
+    inputName: "Иванов Иван Иванович",
+  },
+  {
+    inputName: "Петров Иван Иванович",
+  },
+  {
+    inputName: "Иванов Иван Иванович",
+  },
+];
 
 const CreateVisitForm = ({ getAllVisits }) => {
   const [visitForm, setVisitForm] = useState({
@@ -23,8 +34,7 @@ const CreateVisitForm = ({ getAllVisits }) => {
     errMessage: "",
   });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = () => {
     const { patient_name, doc_name, date, complaints } = visitForm;
     if (
       patient_name.trim().length !== 0 &&
@@ -52,6 +62,7 @@ const CreateVisitForm = ({ getAllVisits }) => {
   };
 
   const setDocName = (event) => {
+    event.preventDefault();
     setVisitForm({
       ...visitForm,
       doc_name: event.target.value,
@@ -95,13 +106,15 @@ const CreateVisitForm = ({ getAllVisits }) => {
         <div className="form-div">
           <label>Врач</label>
           <SelectFieldComponent
+            id={"doc_name"}
             value={visitForm.doc_name}
             handleChange={setDocName}
+            items={doc_names}
           />
         </div>
         <div className="form-div">
           <label>Дата</label>
-          <DateFieldComponent value={visitForm.date} setValue={setDate} />
+          <DateFieldComponent id={"date"} value={visitForm.date} setValue={setDate} />
         </div>
         <div className="form-div">
           <label>Жалобы</label>

@@ -40,11 +40,10 @@ class API {
   };
 
   updateVisit = async (visit) => {
-    return await axios.patch(this._patch_updateVisitUrl, {
+    return await axios.patch(this._patch_updateVisitUrl, visit, {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("token"),
       },
-      visit,
     });
   };
 

@@ -1,4 +1,4 @@
-import React from "react";
+import { React } from "react";
 import {
   Table,
   TableBody,
@@ -8,15 +8,20 @@ import {
   TableRow,
   Paper,
 } from "@mui/material";
-import VisitComponent from "../VisitComponent/VisitComponent";
+import VisitComponent from "./VisitComponent/VisitComponent";
+import SortVisitsComponent from "./SortVisitsComponent/SortVisitsComponent";
 import "./VisitListComponent.scss";
 
-const VisitListComponent = ({ visits, getAllVisits }) => {
-  const arrVisits = Array.from(visits);
-  const tableTitle = ["Имя", "Врач", "Дата", "Жалобы"];
+const tableTitle = ["Имя", "Врач", "Дата", "Жалобы"];
 
+const VisitListComponent = ({ visits, getAllVisits, setVisits }) => {
   return (
     <div className="visit-list-component">
+      <SortVisitsComponent
+        visits={visits}
+        getAllVisits={getAllVisits}
+        setVisits={setVisits}
+      />
       <TableContainer className="visit-list" component={Paper}>
         <Table aria-label="simple table">
           <TableHead>
@@ -30,7 +35,7 @@ const VisitListComponent = ({ visits, getAllVisits }) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {arrVisits.map((visit, index) => (
+            {visits.map((visit, index) => (
               <VisitComponent
                 getAllVisits={getAllVisits}
                 key={`visit-${index}`}
