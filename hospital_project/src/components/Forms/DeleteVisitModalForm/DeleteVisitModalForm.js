@@ -6,18 +6,6 @@ import Typography from "@mui/material/Typography";
 import ButtonComponent from "../../Elements/ButtonComponent/ButtonComponent";
 import "./DeleteVisitModalForm.scss";
 
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 400,
-  bgcolor: "background.paper",
-  border: "2px solid #000",
-  boxShadow: 24,
-  p: 4,
-};
-
 const DeleteVisitModalForm = ({ id, getAllVisits }) => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
@@ -45,7 +33,7 @@ const DeleteVisitModalForm = ({ id, getAllVisits }) => {
           aria-labelledby="modal-modal-title"
           aria-describedby="modal-modal-description"
         >
-          <Box sx={style}>
+          <Box className="Box">
             <Typography
               className="modal-title"
               id="modal-modal-title"

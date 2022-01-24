@@ -8,8 +8,8 @@ import {
   TableRow,
   Paper,
 } from "@mui/material";
-import SortVisitsComponent from "./SortVisitsComponent/SortVisitsComponent";
 import VisitComponent from "./VisitComponent/VisitComponent";
+import SortVisitsComponent from "./SortVisitsComponent/SortVisitsComponent";
 import "./VisitListComponent.scss";
 
 const tableTitle = ["Имя", "Врач", "Дата", "Жалобы"];

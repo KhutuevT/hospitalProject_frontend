@@ -1,4 +1,4 @@
-import React from "react";
+import { React, useState } from "react";
 import { TableCell, TableRow } from "@mui/material";
 import EditVisitModalForm from "../../Forms/EditVisitModalForm/EditVisitModalForm";
 import DeleteVisitModalForm from "../../Forms/DeleteVisitModalForm/DeleteVisitModalForm";
@@ -6,7 +6,9 @@ import moment from "moment";
 
 const VisitComponent = ({ index, visit, getAllVisits }) => {
   const { _id, patient_name, doc_name, date, complaints } = visit;
-
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
   return (
     <TableRow
       key={index}
@@ -19,10 +21,19 @@ const VisitComponent = ({ index, visit, getAllVisits }) => {
       <TableCell align="center">
         <div className="button-div">
           <DeleteVisitModalForm id={_id} getAllVisits={getAllVisits} />
-          <EditVisitModalForm
-            oldVisitDate={visit}
-            getAllVisits={getAllVisits}
+          <img
+            onClick={handleOpen}
+            className="edit-img"
+            src="/images/Edit.svg"
+            alt=" "
           />
+          {open && (
+            <EditVisitModalForm
+              oldVisitDate={visit}
+              getAllVisits={getAllVisits}
+              handleClose={handleClose}
+            />
+          )}
         </div>
       </TableCell>
     </TableRow>

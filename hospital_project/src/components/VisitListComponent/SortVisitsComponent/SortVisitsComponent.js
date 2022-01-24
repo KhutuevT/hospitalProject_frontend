@@ -20,6 +20,7 @@ const sortFieldsArrRU = [
     value: "date",
   },
 ];
+
 const sortDirectionArr = [
   {
     inputName: "По возрастанию",
