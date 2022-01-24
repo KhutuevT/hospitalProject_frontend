@@ -9,10 +9,21 @@ import TextInputFieldComponent from "../../Elements/TextInputFieldComponent/Text
 import "./CreateVisitForm.scss";
 
 const todayDate = moment().format();
+// const doc_names = [
+//   "Иванов Иван Иванович",
+//   "Петров Иван Иванович",
+//   "Иванов Иван Иванович",
+// ];
 const doc_names = [
-  "Иванов Иван Иванович",
-  "Петров Иван Иванович",
-  "Иванов Иван Иванович",
+  {
+    inputName: "Иванов Иван Иванович",
+  },
+  {
+    inputName: "Петров Иван Иванович",
+  },
+  {
+    inputName: "Иванов Иван Иванович",
+  },
 ];
 
 const CreateVisitForm = ({ getAllVisits }) => {
@@ -29,7 +40,6 @@ const CreateVisitForm = ({ getAllVisits }) => {
   });
 
   const handleSubmit = () => {
-    visitForm.doc_name = doc_names[visitForm.doc_name];
     const { patient_name, doc_name, date, complaints } = visitForm;
     if (
       patient_name.trim().length !== 0 &&

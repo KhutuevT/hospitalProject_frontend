@@ -8,13 +8,16 @@ const SelectFieldComponent = ({ value, handleChange, items }) => {
       <Select
         className="select-field"
         value={value}
-        onChange={handleChange}
+        onChange={(e) => handleChange(e)}
         displayEmpty
         inputProps={{ "aria-label": "Without label" }}
       >
         {items.map((name, index) => (
-          <MenuItem key={`menu-item${index}`} value={index}>
-            {name}
+          <MenuItem
+            key={`menu-item${index}`}
+            value={name.value || name.inputName}
+          >
+            {name.inputName}
           </MenuItem>
         ))}
       </Select>

@@ -23,9 +23,15 @@ const style = {
   p: 4,
 };
 const doc_names = [
-  "Иванов Иван Иванович",
-  "Петров Иван Иванович",
-  "Иванов Иван Иванович",
+  {
+    inputName: "Иванов Иван Иванович",
+  },
+  {
+    inputName: "Петров Иван Иванович",
+  },
+  {
+    inputName: "Иванов Иван Иванович",
+  },
 ];
 
 const EditVisitModalForm = ({ oldVisitDate, getAllVisits }) => {
@@ -36,7 +42,7 @@ const EditVisitModalForm = ({ oldVisitDate, getAllVisits }) => {
     isOpen: false,
     errMessage: "",
   });
-  
+
   const [visitForm, setVisitForm] = useState({
     id: oldVisitDate._id,
     patient_name: oldVisitDate.patient_name,
@@ -45,7 +51,6 @@ const EditVisitModalForm = ({ oldVisitDate, getAllVisits }) => {
     complaints: oldVisitDate.complaints,
   }); //How destructure????
   const handleSubmit = () => {
-    visitForm.doc_name = doc_names[visitForm.doc_name];
     const { patient_name, doc_name, date, complaints } = visitForm;
     if (
       patient_name.trim().length !== 0 &&
@@ -131,8 +136,7 @@ const EditVisitModalForm = ({ oldVisitDate, getAllVisits }) => {
               <div className="form-div">
                 <label>Врач</label>
                 <SelectFieldComponent
-                  // value={visitForm.doc_name}
-                  value={1}
+                  value={visitForm.doc_name}
                   handleChange={setDocName}
                   items={doc_names}
                 />
