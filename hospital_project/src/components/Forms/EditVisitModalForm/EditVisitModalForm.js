@@ -51,7 +51,7 @@ const EditVisitModalForm = ({ oldVisitDate, getAllVisits }) => {
     date: oldVisitDate.date,
     complaints: oldVisitDate.complaints,
   }); //How destructure????
-  
+
   const handleSubmit = () => {
     const { patient_name, doc_name, date, complaints } = visitForm;
     if (
@@ -142,21 +142,6 @@ const EditVisitModalForm = ({ oldVisitDate, getAllVisits }) => {
                   handleChange={setDocName}
                   items={doc_names}
                 />
-                <FormControl className="form-control">
-                  <Select
-                      className="select-field"
-                        value={visitForm.doc_names || ''}
-                        onChange={setDocName}
-                        displayEmpty
-                        inputProps={{ "aria-label": "Without label" }}
-                          >
-                            {doc_names.map((name, index) => (
-                          <MenuItem key={`menu-item${index}`} value={index}>
-                            {name}
-                         </MenuItem>
-                    ))}
-                  </Select>
-                </FormControl>
               </div>
               <div className="form-div">
                 <label>Дата</label>
