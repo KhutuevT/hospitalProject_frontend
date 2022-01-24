@@ -34,15 +34,12 @@ const sortDirectionArr = [
 const SortVisitsComponent = ({ visits, getAllVisits, setVisits }) => {
   const [sortFieldsItem, setSortFieldsItem] = useState("none");
   const [sortDirectionItem, setSortDirectionItem] = useState("asc");
+
   const sortArrVisits = (field, direction) => {
     console.log(field, direction);
-    visits.sort((a, b) => {
-      if (a[field] > b[field]) {
-        return 1;
-      } else {
-        return -1;
-      }
-    });
+    visits.sort((a, b) =>
+      a[field] > b[field] ? 1 : a[field] < b[field] ? -1 : 0
+    );
     if (direction === "desc") {
       visits.reverse();
     }
