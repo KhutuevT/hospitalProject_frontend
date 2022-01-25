@@ -10,8 +10,8 @@ import {
 } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import VisitComponent from "./VisitComponent/VisitComponent";
-import FilterVisitsComponent from "./FilterVisitsComponent/FilterVisitsComponent";
 import SortVisitsComponent from "./SortVisitsComponent/SortVisitsComponent";
+import FilterVisitsComponent from "./FilterVisitsComponent/FilterVisitsComponent";
 import "./VisitListComponent.scss";
 
 const tableTitle = ["Имя", "Врач", "Дата", "Жалобы"];
