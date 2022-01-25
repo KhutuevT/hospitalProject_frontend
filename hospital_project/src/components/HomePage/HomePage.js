@@ -5,10 +5,14 @@ import VisitListComponent from "../VisitListComponent/VisitListComponent";
 import "./HomePage.scss";
 
 const HomePage = () => {
+  const [filterVisits, setFilterVisits] = useState([]);
   const [visits, setVisits] = useState([]);
 
   const getAllVisits = useCallback(async () => {
-    await API.getAllVisits().then((res) => setVisits(res.data.data));
+    await API.getAllVisits().then((res) => {
+      setFilterVisits(res.data.data);
+      setVisits(res.data.data);
+    });
   }, []);
 
   useEffect(() => {
@@ -16,15 +20,17 @@ const HomePage = () => {
       return;
     }
     getAllVisits();
-  }, []); // check async await
+  }, []);
 
   return (
     <div className="home-page">
       <CreateVisitForm getAllVisits={getAllVisits} />
       <VisitListComponent
         visits={visits}
-        getAllVisits={getAllVisits}
         setVisits={setVisits}
+        filterVisits={filterVisits}
+        setFilterVisits={setFilterVisits}
+        getAllVisits={getAllVisits}
       />
     </div>
   );
