@@ -1,0 +1,20 @@
+.button-img-div {
+  display: flex;
+  justify-content: space-around;
+}
+
+.MuiTableRow-root {
+  td {
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  td:hover {
+    overflow: unset;
+    text-overflow: unset;
+    white-space: unset;
+    word-wrap: break-word;
+  }
+}

@@ -1,42 +1,36 @@
 .visit-list-component {
   margin-left: 20px;
   margin-right: 20px;
-  margin-top: 20px;
+  max-width: 100%;
 
-  .sort-visits {
+  .sort-filter-visits {
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: space-between;
-    
+    margin-bottom: 20px;
+
     .open-filter {
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      p {
-        margin-right: 5px;
-      }
-    }
-  }
-  .sort-field {
-    width: 100%;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    display: flex;
-    justify-content: end;
 
-    div {
-      margin-right: 30px;
-      width: 200px;
+      p {
+        margin: 0px;
+      }
+      .add-img {
+        display: flex;
+        align-self: center;
+      }
     }
   }
 
   .visit-list {
     border-radius: 0px;
-
+    max-height: 50vh;
     thead {
-      background-color: #c4c4c4;
-      border: solid 1px #c4c4c4;
       border-bottom: solid 2px;
+      th {
+        background-color: #c4c4c4;
+        border: solid 1px #c4c4c4;
+      }
     }
 
     tbody {
@@ -63,5 +57,24 @@
   .button-div {
     display: flex;
     justify-content: space-between;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .sort-filter-visits {
+    display: flex;
+    flex-direction: column;
+    .open-filter {
+      display: flex;
+      justify-content: center;
+
+      p {
+        margin: 0px;
+      }
+      .add-img {
+        display: flex;
+        align-self: center;
+      }
+    }
   }
 }
