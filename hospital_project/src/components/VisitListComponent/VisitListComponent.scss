@@ -3,12 +3,27 @@
   margin-right: 20px;
   margin-top: 20px;
 
+  .sort-visits {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    .open-filter {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      p {
+        margin-right: 5px;
+      }
+    }
+  }
   .sort-field {
     width: 100%;
     margin-top: 20px;
     margin-bottom: 20px;
     display: flex;
     justify-content: end;
+
     div {
       margin-right: 30px;
       width: 200px;

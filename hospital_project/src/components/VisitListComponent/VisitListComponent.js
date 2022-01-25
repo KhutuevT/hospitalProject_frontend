@@ -1,4 +1,4 @@
-import { React } from "react";
+import { React, useState } from "react";
 import {
   Table,
   TableBody,
@@ -8,20 +8,45 @@ import {
   TableRow,
   Paper,
 } from "@mui/material";
+import AddIcon from "@mui/icons-material/Add";
 import VisitComponent from "./VisitComponent/VisitComponent";
 import SortVisitsComponent from "./SortVisitsComponent/SortVisitsComponent";
+import FilterVisitsComponent from "./FilterVisitsComponent/FilterVisitsComponent";
 import "./VisitListComponent.scss";
 
 const tableTitle = ["Имя", "Врач", "Дата", "Жалобы"];
 
-const VisitListComponent = ({ visits, getAllVisits, setVisits }) => {
+const VisitListComponent = ({
+  visits,
+  setVisits,
+  filterVisits,
+  setFilterVisits,
+  getAllVisits,
+}) => {
+  const [filterOpen, setFilterOpen] = useState(false);
   return (
     <div className="visit-list-component">
-      <SortVisitsComponent
-        visits={visits}
-        getAllVisits={getAllVisits}
-        setVisits={setVisits}
-      />
+      <div className="sort-visits">
+        <SortVisitsComponent
+          filterVisits={filterVisits}
+          getAllVisits={getAllVisits}
+          setFilterVisits={setFilterVisits}
+        />
+        {!filterOpen && (
+          <div className="open-filter">
+            <p>Добавить фильтр по дате:</p>
+            <AddIcon onClick={() => setFilterOpen(true)} />
+          </div>
+        )}
+      </div>
+      {filterOpen && (
+        <FilterVisitsComponent
+          visits={visits}
+          setFilterVisits={setFilterVisits}
+          getAllVisits={getAllVisits}
+          setFilterOpen={setFilterOpen}
+        />
+      )}
       <TableContainer className="visit-list" component={Paper}>
         <Table aria-label="simple table">
           <TableHead>
@@ -35,7 +60,7 @@ const VisitListComponent = ({ visits, getAllVisits, setVisits }) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {visits.map((visit, index) => (
+            {filterVisits.map((visit, index) => (
               <VisitComponent
                 getAllVisits={getAllVisits}
                 key={`visit-${index}`}

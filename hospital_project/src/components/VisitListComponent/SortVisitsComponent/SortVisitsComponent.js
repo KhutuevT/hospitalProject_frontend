@@ -32,18 +32,18 @@ const sortDirectionArr = [
   },
 ];
 
-const SortVisitsComponent = ({ visits, getAllVisits, setVisits }) => {
+const SortVisitsComponent = ({ filterVisits, getAllVisits, setFilterVisits }) => {
   const [sortFieldsItem, setSortFieldsItem] = useState("none");
   const [sortDirectionItem, setSortDirectionItem] = useState("asc");
 
   const sortArrVisits = (field, direction) => {
-    visits.sort((a, b) =>
+    filterVisits.sort((a, b) =>
       a[field] > b[field] ? 1 : a[field] < b[field] ? -1 : 0
     );
     if (direction === "desc") {
-      visits.reverse();
+      filterVisits.reverse();
     }
-    setVisits([...visits]);
+    setFilterVisits([...filterVisits]);
   };
 
   const setDataSortField = (event) => {
