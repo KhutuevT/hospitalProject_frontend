@@ -3,6 +3,7 @@
   justify-content: space-between;
   align-items: flex-end;
   margin-bottom: 10px;
+
   .filter-div {
     display: flex;
     flex-direction: column;
@@ -17,12 +18,13 @@
     flex-direction: column;
     align-items: stretch;
     justify-content: center;
-
     margin-bottom: 10px;
+
     .filter-div {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
+      
       p {
         margin-top: 0px;
       }
