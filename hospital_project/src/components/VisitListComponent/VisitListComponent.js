@@ -24,6 +24,7 @@ const VisitListComponent = ({
   getAllVisits,
 }) => {
   const [filterOpen, setFilterOpen] = useState(false);
+
   return (
     <div className="visit-list-component">
       <div className="sort-filter-visits">
@@ -38,16 +39,15 @@ const VisitListComponent = ({
             <AddIcon className="add-img" onClick={() => setFilterOpen(true)} />
           </div>
         )}
-
       </div>
       {filterOpen && (
-          <FilterVisitsComponent
-            visits={visits}
-            setFilterVisits={setFilterVisits}
-            getAllVisits={getAllVisits}
-            setFilterOpen={setFilterOpen}
-          />
-        )}
+        <FilterVisitsComponent
+          visits={visits}
+          setFilterVisits={setFilterVisits}
+          getAllVisits={getAllVisits}
+          setFilterOpen={setFilterOpen}
+        />
+      )}
       <TableContainer className="visit-list" component={Paper}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
