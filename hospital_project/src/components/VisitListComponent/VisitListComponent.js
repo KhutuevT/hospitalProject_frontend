@@ -24,9 +24,10 @@ const VisitListComponent = ({
   getAllVisits,
 }) => {
   const [filterOpen, setFilterOpen] = useState(false);
+
   return (
     <div className="visit-list-component">
-      <div className="sort-visits">
+      <div className="sort-filter-visits">
         <SortVisitsComponent
           filterVisits={filterVisits}
           getAllVisits={getAllVisits}
@@ -35,7 +36,7 @@ const VisitListComponent = ({
         {!filterOpen && (
           <div className="open-filter">
             <p>Добавить фильтр по дате:</p>
-            <AddIcon onClick={() => setFilterOpen(true)} />
+            <AddIcon className="add-img" onClick={() => setFilterOpen(true)} />
           </div>
         )}
       </div>
@@ -48,7 +49,7 @@ const VisitListComponent = ({
         />
       )}
       <TableContainer className="visit-list" component={Paper}>
-        <Table aria-label="simple table">
+        <Table stickyHeader aria-label="sticky table">
           <TableHead>
             <TableRow>
               {tableTitle.map((title, index) => (

@@ -60,7 +60,7 @@ const SortVisitsComponent = ({ filterVisits, getAllVisits, setFilterVisits }) =>
 
   return (
     <div className="sort-field">
-      <div>
+      <div className="sort-div">
         <p>Сортировать по:</p>
         <SelectFieldComponent
           value={sortFieldsItem}
@@ -69,7 +69,7 @@ const SortVisitsComponent = ({ filterVisits, getAllVisits, setFilterVisits }) =>
         />
       </div>
       {sortFieldsItem !== "none" && (
-        <div>
+        <div className="sort-div">
           <p>Направление:</p>
           <SelectFieldComponent
             value={sortDirectionItem}

@@ -32,20 +32,16 @@ const FilterVisitsComponent = ({
   };
   
   return (
-    <div className="filter-div">
-      <div>
-        <p>С :</p>
-      </div>
-      <div>
+    <div className="filter">
+      <div className="filter-div">
+      <p>С :</p>
         <DateFieldComponent value={minDate} setValue={setMinDate} />
       </div>
-      <div>
-        <p>По :</p>
-      </div>
-      <div>
+      <div className="filter-div">
+      <p>По :</p>
         <DateFieldComponent value={maxDate} setValue={setMaxDate} />
       </div>
-      <div>
+      <div className="filter-div">
         <ButtonComponent
           text={"Фильтровать"}
           onClick={() => {

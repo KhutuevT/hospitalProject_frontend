@@ -23,11 +23,7 @@ const doc_names = [
   },
 ];
 
-const EditVisitModalForm = ({
-  oldVisitDate,
-  getAllVisits,
-  handleClose,
-}) => {
+const EditVisitModalForm = ({ oldVisitDate, getAllVisits, handleClose }) => {
   const { _id, patient_name, doc_name, date, complaints } = oldVisitDate;
   const [errMessages, setErrMessages] = useState({
     isOpen: false,
@@ -79,7 +75,7 @@ const EditVisitModalForm = ({
   };
 
   const setDate = (full_date) => {
-    const date = moment(full_date).format();
+    const new_date = moment(full_date).format();
     setVisitForm({
       ...visitForm,
       new_date,
