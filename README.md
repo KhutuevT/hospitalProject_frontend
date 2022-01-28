@@ -1,1 +1,0 @@
-# hospitalProject_frontend

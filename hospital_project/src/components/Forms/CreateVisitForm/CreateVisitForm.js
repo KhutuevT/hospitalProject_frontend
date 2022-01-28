@@ -33,7 +33,7 @@ const CreateVisitForm = ({ getAllVisits }) => {
     isOpen: false,
     errMessage: "",
   });
-
+  
   const handleSubmit = () => {
     const { patient_name, doc_name, date, complaints } = visitForm;
     if (

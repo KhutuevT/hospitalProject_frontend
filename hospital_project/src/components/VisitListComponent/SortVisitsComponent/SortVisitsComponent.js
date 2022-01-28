@@ -1,4 +1,7 @@
 import { React, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { getVisits } from "../../../asyncActions/visits";
+import { addFilterVisitAction } from "../../../store/visitsReducer";
 import SelectFieldComponent from "../../Elements/SelectFieldComponent/SelectFieldComponent";
 import "./SortVisitsComponent.scss";
 
@@ -32,9 +35,11 @@ const sortDirectionArr = [
   },
 ];
 
-const SortVisitsComponent = ({ filterVisits, getAllVisits, setFilterVisits }) => {
+const SortVisitsComponent = () => {
   const [sortFieldsItem, setSortFieldsItem] = useState("none");
   const [sortDirectionItem, setSortDirectionItem] = useState("asc");
+  const filterVisits = useSelector((state) => state.filterVisits);
+  const dispatch = useDispatch();
 
   const sortArrVisits = (field, direction) => {
     filterVisits.sort((a, b) =>
@@ -43,14 +48,14 @@ const SortVisitsComponent = ({ filterVisits, getAllVisits, setFilterVisits }) =>
     if (direction === "desc") {
       filterVisits.reverse();
     }
-    setFilterVisits([...filterVisits]);
+    dispatch(addFilterVisitAction([...filterVisits]));
   };
 
   const setDataSortField = (event) => {
     setSortFieldsItem(event.target.value);
     if (event.target.value !== "none") {
       sortArrVisits(event.target.value, sortDirectionItem);
-    } else getAllVisits();
+    } else dispatch(getVisits());
   };
 
   const setDatasortDirection = (event) => {
