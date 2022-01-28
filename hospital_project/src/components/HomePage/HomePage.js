@@ -1,8 +1,9 @@
-import React, { useState, useEffect, useCallback } from "react";
-import CreateVisitForm from "../Forms/CreateVisitForm/CreateVisitForm";
-import VisitListComponent from "../VisitListComponent/VisitListComponent";
+import { React, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { getVisits } from "../../asyncActions/visits";
+import CreateVisitForm from "../Forms/CreateVisitForm/CreateVisitForm";
+import VisitListComponent from "../VisitListComponent/VisitListComponent";
+
 import "./HomePage.scss";
 
 const HomePage = () => {

@@ -1,4 +1,5 @@
 import { React, useState } from "react";
+import { useSelector } from "react-redux";
 import {
   Table,
   TableBody,
@@ -9,7 +10,6 @@ import {
   Paper,
 } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
-import { useSelector } from "react-redux";
 import VisitComponent from "./VisitComponent/VisitComponent";
 import SortVisitsComponent from "./SortVisitsComponent/SortVisitsComponent";
 import FilterVisitsComponent from "./FilterVisitsComponent/FilterVisitsComponent";

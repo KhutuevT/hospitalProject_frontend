@@ -1,10 +1,10 @@
 import { React, useState } from "react";
-import ButtonComponent from "../../Elements/ButtonComponent/ButtonComponent";
-import DateFieldComponent from "../../Elements/DateFieldComponent/DateFieldComponent";
-import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import { useSelector, useDispatch } from "react-redux";
 import { getVisits } from "../../../asyncActions/visits";
 import { addFilterVisitAction } from "../../../store/visitsReducer";
+import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import ButtonComponent from "../../Elements/ButtonComponent/ButtonComponent";
+import DateFieldComponent from "../../Elements/DateFieldComponent/DateFieldComponent";
 import "./FilterVisitsComponent.scss";
 
 const FilterVisitsComponent = ({ setFilterOpen }) => {
@@ -15,8 +15,8 @@ const FilterVisitsComponent = ({ setFilterOpen }) => {
   const dateFilter = () => {
     const startDate = minDate ? new Date(minDate) : null;
     const endDate = maxDate ? new Date(maxDate) : null;
-    dispatch(
-      addFilterVisitAction(
+    dispatch (
+      addFilterVisitAction (
         visits.filter((visit) => {
           const date = new Date(visit.date);
           return !(

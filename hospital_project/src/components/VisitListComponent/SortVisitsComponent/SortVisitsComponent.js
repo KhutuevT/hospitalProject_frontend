@@ -1,8 +1,8 @@
 import { React, useState } from "react";
-import SelectFieldComponent from "../../Elements/SelectFieldComponent/SelectFieldComponent";
 import { useSelector, useDispatch } from "react-redux";
 import { getVisits } from "../../../asyncActions/visits";
 import { addFilterVisitAction } from "../../../store/visitsReducer";
+import SelectFieldComponent from "../../Elements/SelectFieldComponent/SelectFieldComponent";
 import "./SortVisitsComponent.scss";
 
 const sortFieldsArrRU = [
