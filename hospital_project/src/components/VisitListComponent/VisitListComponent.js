@@ -9,6 +9,7 @@ import {
   Paper,
 } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
+import { useSelector } from "react-redux";
 import VisitComponent from "./VisitComponent/VisitComponent";
 import SortVisitsComponent from "./SortVisitsComponent/SortVisitsComponent";
 import FilterVisitsComponent from "./FilterVisitsComponent/FilterVisitsComponent";
@@ -16,23 +17,15 @@ import "./VisitListComponent.scss";
 
 const tableTitle = ["Имя", "Врач", "Дата", "Жалобы"];
 
-const VisitListComponent = ({
-  visits,
-  setVisits,
-  filterVisits,
-  setFilterVisits,
-  getAllVisits,
-}) => {
+const VisitListComponent = () => {
   const [filterOpen, setFilterOpen] = useState(false);
+  const filterVisits = useSelector((state) => state.filterVisits);
 
   return (
     <div className="visit-list-component">
       <div className="sort-filter-visits">
-        <SortVisitsComponent
-          filterVisits={filterVisits}
-          getAllVisits={getAllVisits}
-          setFilterVisits={setFilterVisits}
-        />
+        <SortVisitsComponent />
+
         {!filterOpen && (
           <div className="open-filter">
             <p>Добавить фильтр по дате:</p>
@@ -40,14 +33,9 @@ const VisitListComponent = ({
           </div>
         )}
       </div>
-      {filterOpen && (
-        <FilterVisitsComponent
-          visits={visits}
-          setFilterVisits={setFilterVisits}
-          getAllVisits={getAllVisits}
-          setFilterOpen={setFilterOpen}
-        />
-      )}
+
+      {filterOpen && <FilterVisitsComponent setFilterOpen={setFilterOpen} />}
+
       <TableContainer className="visit-list" component={Paper}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
@@ -63,7 +51,6 @@ const VisitListComponent = ({
           <TableBody>
             {filterVisits.map((visit, index) => (
               <VisitComponent
-                getAllVisits={getAllVisits}
                 key={`visit-${index}`}
                 index={index}
                 visit={visit}
